@@ -46,7 +46,7 @@ document.getElementById('signup-form').addEventListener('submit', function(event
 
     // Si las validaciones son correctas, hacemos la llamada al backend
     if (password === re_password) {
-        fetch('http://localhost:3000/api/register', {  // Asegúrate de que este endpoint existe en tu backend
+        fetch('http://localhost:8080/auth/register', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

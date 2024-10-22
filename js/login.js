@@ -5,7 +5,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     const password = document.getElementById('password').value;
 
     // Hacer la llamada a la API de login
-    fetch('http://localhost:3000/api/login', {  // Asegúrate de que este endpoint existe en tu backend
+    fetch('http://localhost:8080/auth/login', {  
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
