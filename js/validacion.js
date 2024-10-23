@@ -5,7 +5,7 @@ document.getElementById('signup-form').addEventListener('submit', function(event
     const re_password = document.getElementById('re_password').value;
     const telefono = document.getElementById('telefono').value;
     const email = document.getElementById('email').value;
-    const name = document.getElementById('name').value;
+    const nombre = document.getElementById('nombre').value;
 
     // Expresión regular para verificar la contraseña
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -52,7 +52,7 @@ document.getElementById('signup-form').addEventListener('submit', function(event
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: name,
+                nombre: nombre,
                 email: email,
                 telefono: telefono,
                 password: password
