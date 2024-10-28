@@ -15,17 +15,18 @@ document.getElementById('login-form').addEventListener('submit', function(event)
             password: password
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Inicio de sesión exitoso.');
-            window.location.href = 'dashboard.html'; // Redirigir al dashboard o página principal
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Decodifica la respuesta JSON si es exitoso
         } else {
-            alert('Error al iniciar sesión: ' + data.message);
+            throw new Error('Error en el inicio de sesión');
         }
     })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Ocurrió un error al iniciar sesión.');
-    });
+    .then(data => {
+        // Guarda el token en localStorage o sessionStorage
+        localStorage.setItem('token', data.jwt);  // 'jwt' es el campo en AuthResponseDTO
+        console.log('Token guardado:', data.jwt);
+        // Redirige al usuario o realiza otra acción según el flujo de tu app
+    })
+    .catch(error => console.error('Error:', error));
 });
