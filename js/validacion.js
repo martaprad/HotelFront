@@ -46,7 +46,7 @@ document.getElementById('signup-form').addEventListener('submit', function(event
 
     // Si las validaciones son correctas, hacemos la llamada al backend
     if (password === re_password) {
-        fetch('http://localhost:8080/auth/register', {  
+        fetch('http://localhost:8080/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,22 +54,31 @@ document.getElementById('signup-form').addEventListener('submit', function(event
             body: JSON.stringify({
                 nombre: nombre,
                 email: email,
-                telefono: telefono,
-                password: password
+                password: password,
+                telefono: telefono
             })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Registro exitoso. Ahora puedes iniciar sesión.');
-                window.location.href = 'login.html'; // Redirigir al login
+        .then(response => {
+            if (response.ok) {
+                // La respuesta es exitosa (código 2xx)
+                return response.text(); // O response.json() si el servidor devuelve JSON
             } else {
-                alert('Error en el registro: ' + data.message);
+                // La respuesta tiene un código de error
+                return response.text().then(errorMessage => { throw new Error(errorMessage); });
             }
         })
+        .then(data => {
+            // Manejar respuesta exitosa
+            alert('Éxito: ' + data); // Muestra el mensaje del servidor
+            // Puedes redirigir al usuario o limpiar el formulario aquí
+            document.getElementById('signup-form').reset();
+            window.location.href = 'login.html';
+        })
         .catch(error => {
-            console.error('Error:', error);
-            alert('Ocurrió un error al procesar tu registro.');
+            // Manejar error
+            console.error('Error:', error.message);
+            alert('Error: ' + error.message);
         });
-    }
+    };
+
 });
