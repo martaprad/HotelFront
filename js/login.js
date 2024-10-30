@@ -9,23 +9,36 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
+            //'Authorization': 'Bearer' + token,
+            //'Access-Control-Allow-Origin' 
         },
         body: JSON.stringify({
             email: email,
             password: password
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Inicio de sesión exitoso.');
-            window.location.href = 'dashboard.html'; // Redirigir al dashboard o página principal
+    .then(response => {
+        if (response.ok) {
+            // La respuesta es exitosa (código 2xx)
+            return response.text();
         } else {
-            alert('Error al iniciar sesión: ' + data.message);
+            // La respuesta tiene un código de error
+            return response.text().then(errorMessage => { throw new Error(errorMessage); });
         }
     })
+    .then(data => {
+        // Manejar respuesta exitosa
+        console.log(data);
+        let token = data;
+        localStorage.setItem('user', JSON.stringify(data));
+        window.location.href = 'reservas.html';
+        return data;
+    })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Ocurrió un error al iniciar sesión.');
+        // Manejar error
+        console.error('Error:', error.message);
+        alert('Error: ' + error.message);
     });
 });
+
+
