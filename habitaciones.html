@@ -9,6 +9,11 @@
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Fuentes Google API -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&family=Magra&family=Ms+Madi&family=Oooh+Baby&family=Pacifico&family=Radley&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -23,8 +28,8 @@
                     <ul class="navbar-nav mx-auto w-100 justify-content-center gap-5">
                         <li class="nav-item"><a class="nav-link text-dark" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" href="habitaciones.html">Nuestras habitaciones</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="#">Actividades</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="#">Transfer</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="actividades.html">Actividades</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="transfer.html">Transfer</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" href="reservas.html">Reservas</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" href="login.html">Login / Registro</a></li>
                     </ul>
@@ -34,40 +39,91 @@
     </header>
 
      <!-- Contenido principal -->
-     <main class="py-5 min-vh-100" style="background-color: #e0e0d1;">
+     <main class="py-5 min-vh-100" style="background-color: #f5f5dc65;"> 
         <div class="container">
-            <h2 class="text-center mb-5">Nuestras habitaciones</h2>
+            <h1 class="text-center mb-5" style="font-family: 'Averia Libre'; font-weight: 500; font-style: bold; color: #623e2a;">Nuestras habitaciones</h1>
             <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- Distintas habitaciones modales -->
+                <!-- HabitaciónTipo1 -->
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100" data-bs-toggle="modal" data-bs-target="#modalHabitacionDoble">
                         <img src="images/foto_02_habitacion_doble.png" class="card-img-top" alt="Hab_doble">
                         <div class="card-body">
-                            <h5 class="card-title">Habitación Doble</h5>
-                            <p class="card-text">2 adultos | 1 menor de 7 años. Desde 100€ por noche.</p>
+                            <h5 class="card-title text-center w-100" style="font-family: 'Averia Libre'; font-size: 500; font-style: bold; color: black;">Habitación Doble</h5>
+                            <p class="card-text">Haz click en la imagen para más información.</p>
                         </div>
                     </div>
                 </div>
+                <!-- HabitaciónTipo2 -->
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100" data-bs-toggle="modal" data-bs-target="#modalHabitacionTriple">
                         <img src="images/foto_03_habitacion_triple.png" class="card-img-top" alt="Hab_triple">
                         <div class="card-body">
-                            <h5 class="card-title">Habitación Triple</h5>
-                            <p class="card-text">3 adultos | 1 menor de 7 años. Desde 150€ por noche.</p>
+                            <h5 class="card-title text-center w-100" style="font-family: 'Averia Libre'; font-size: 500; font-style: bold; color: black;">Habitación Triple</h5>
+                            <p class="card-text">Haz click en la imagen para más información.</p>
                         </div>
                     </div>
                 </div>
+                <!-- HabitaciónTipo3 -->
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100" data-bs-toggle="modal" data-bs-target="#modalHabitacionDeluxe">
                         <img src="images/foto_04_habitacion_deluxe.png" class="card-img-top" alt="Hab_deluxe">
                         <div class="card-body">
-                            <h5 class="card-title">Deluxe</h5>
-                            <p class="card-text">4 adultos | 2 menores de 7 años. Desde 200€ por noche.</p>
+                            <h5 class="card-title text-center w-100" style="font-family: 'Averia Libre'; font-size: 500; font-style: bold; color: black;">Habitación Deluxe</h5>
+                            <p class="card-text">Haz click en la imagen para más información.</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
+
+    <!-- Modal Habitacion Doble -->
+    <div class="modal fade" id="modalHabitacionDoble" tabindex="-1" aria-labelledby="modalHabitacionDobleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalHabitacionDobleLabel">Habitación Doble</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/foto_02_habitacion_doble.png" class="img-fluid mb-3" alt="Hab_doble">
+                    <p>2 adultos | 1 menor de 7 años. Desde 100€ por noche.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Habitacion Triple -->
+    <div class="modal fade" id="modalHabitacionTriple" tabindex="-1" aria-labelledby="modalHabitacionTripleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalHabitacionTripleLabel">Habitación Triple</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/foto_03_habitacion_triple.png" class="img-fluid mb-3" alt="Hab_Triple">
+                    <p>3 adultos | 1 menor de 7 años. Desde 150€ por noche.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Habitacion Deluxe -->
+    <div class="modal fade" id="modalHabitacionDeluxe" tabindex="-1" aria-labelledby="modalHabitacionDeluxeLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalHabitacionDeluxeLabel">Habitación Deluxe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/foto_04_habitacion_deluxe.png" class="img-fluid mb-3" alt="Hab_Deluxe">
+                    <p>4 adultos | 2 menores de 7 años. Desde 200€ por noche.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <!-- Bootstrap JS y dependencias -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
