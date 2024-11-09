@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nuestras habitaciones - MDV Hotel</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    
     <!-- Fuentes Google API -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&family=Magra&family=Ms+Madi&family=Oooh+Baby&family=Pacifico&family=Radley&display=swap" rel="stylesheet">
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Navbar con color beige claro, texto negro y botones distribuidos equitativamente -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f5f5dc;">
@@ -37,23 +38,33 @@
         </nav>
     </header>
 
-     <!-- Fondo con color uniforme -->
-     <div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #f5f5dc65; min-height: 100vh;">
-        <!-- Centrar el formulario en una fila con flex y ancho del contenedor -->
-        <section class="signup d-flex justify-content-center align-items-center h-100 w-75">
-            <div class="card p-4 shadow-lg text-center" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9); min-width: 300px;">
-                <h2 class="text-center mb-5" style="font-family: 'Averia Libre'; font-weight: 500; font-style: bold; color: #623e2a;">Reservas</h2> 
-                <!-- Contenido del formulario aquí -->
-                <form method="POST" id="signup-form" class="signup-form">
-                    <!-- Aquí podrías agregar los campos del formulario -->
-                </form>
+    <!-- Fondo con imagen -->
+    <main class="d-flex justify-content-center vh-100"
+        style="background-image: url('images/foto_11_transfer.png'); background-size: cover; background-position: center; opacity: 0.9;">    
+        <div class="container">
+            <h1 class="text-center mb-5" style="font-family: 'Averia Libre'; font-weight: 500; color: #623e2a; margin-top: 60px;">Transfer</h1>
+            <!-- Contenedor para los textos alineados a la izquierda -->
+            <div class="d-flex flex-column align-items-star gap-3">
+                <!-- Primer contenedor -->
+                <div class="text-box p-3" style="max-width: 250px; color: black; background-color: rgba(255, 255, 255, 0.8); border: 1px solid black; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-family: 'Radley', serif;">
+                    <div class="p-4 text-center bg-light border border-dark rounded shadow text-box">
+                        <h2 class="mb-0">Ida y vuelta <br>20€</h2>
+                    </div>
+                </div>
+
+                <!-- Segundo contenedor -->
+                <div class="text-box p-3" style="max-width: 250px; color: black; background-color: rgba(255, 255, 255, 0.8); border: 1px solid black; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-family: 'Radley', serif;">
+                    <div class="p-4 text-center bg-light border border-dark rounded shadow text-box">
+                        <h2 class="mb-0">Sólo un trayecto <br>10€</h2>
+                    </div>
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </main>
 
     <!-- Bootstrap JS y dependencias -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/validacion.js"></script>
 
 </body>
+
 </html>
