@@ -24,16 +24,23 @@ document.getElementById('login-form').addEventListener('submit', function(event)
             return response.text().then(errorMessage => { throw new Error(errorMessage); });
         }
     })
+
     .then(data => {
         // Manejar respuesta exitosa
-        //let token = data.token;
-        localStorage.setItem('authToken', data.token);
+        console.log(data);
+        let token = data;
+        localStorage.setItem('user', JSON.stringify(data));
         window.location.href = 'reservas.html';
         return data;
     })
+
     .catch(error => {
         // Manejar error
         console.error('Error:', error.message);
         alert('Error: ' + error.message);
+        // Manejar error
+        console.error('Error:', error.message);
+        alert('Error: ' + error.message);
     });
+
 });
