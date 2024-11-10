@@ -1,55 +1,55 @@
 document.getElementById('reservas-form').addEventListener('submit', function(event) {
     event.preventDefault();  // Prevenir el envío del formulario
 
-    let fechaInicio = document.getElementById('fechaInicio').value;
-    let fechaFin = document.getElementById('fechaFin').value;
-    let habitacionTipo = document.getElementById('tipoHab').value;
-    let transfer = document.getElementById('transfer').value;
-    let habitacionTipoId = 0;
+    let fInicio = document.getElementById('fechaInicio').value;
+    let fFin = document.getElementById('fechaFin').value;
+    let habTipoId = document.getElementById('tipoHab').value;
+    //let transf = document.getElementById('transfer').value;
+    //let actividades = document.getElementById('actividades');
+    //let tipoActividad = [];
+    //let listActividades = {tipoActividad : []};
 
-    if (habitacionTipo ==="1" || habitacionTipo ==="2" ||  habitacionTipo ==="1" ){
-        listActividades = "Actividades: ";
-        Array.from(actividades.options).forEach(function (option) {
+    if (habTipoId ==="1" || habTipoId ==="2" ||  habTipoId ==="3" ){
+        
+        /*Array.from(actividades.options).forEach(function (option) {
 
             if (option.selected === true) {
                 
-                listActividades = listActividades + " " + option.value;
+                tipoActividad.push(option.value);
+                
+                
             };
         });
-            
-        alert(fechaInicio + " " + fechaFin + " " + habitacionTipo +" " + transfer + " " + listActividades);
+        //listActividades = { tipoActividad: listActividades }; 
+
+        transf = {tipoTraslado: transf}; 
+
+        alert(fInicio + " " + fFin + " " + habitacionTipoId +" " + listActividades + " " + transf);*/
+        alert(fInicio + " " + fFin + " " + habTipoId );
     } else {
 
-        alert("tienes que seleccionar una habitación");
+        alert("Tienes que seleccionar una habitación");
     }
 
-    
 
-    
-
-    let token = localStorage.getItem('authToken');
+    let token = localStorage.getItem('token');
     console.log(token);
 
     // Hacer la llamada a la API de reservas
     
     fetch('http://localhost:8080/reservas', {  
         method: 'POST',
-        
         //mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ${token}'
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            fechaInicio: fechaInicio,
-            fechaFin: fechaFin,
-            habitacionTipoId: habitacionTipoId,
-            actividadDTOList:{
-                tipoActividad: "SURF"
-                },
-            trasladoDTO: {
-                tipoTraslado: transfer
-                }
+            fechaInicio: fInicio,
+            fechaFin: fFin,
+            habitacionTipoId: habTipoId
+            //actividadDTOList: listActividades,
+            //trasladoDTO: transf
             })
         
     })

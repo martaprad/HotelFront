@@ -27,17 +27,12 @@ document.getElementById('login-form').addEventListener('submit', function(event)
 
     .then(data => {
         // Manejar respuesta exitosa
-        console.log(data);
-        let token = data;
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('token', data.token);
         window.location.href = 'reservas.html';
         return data;
     })
 
     .catch(error => {
-        // Manejar error
-        console.error('Error:', error.message);
-        alert('Error: ' + error.message);
         // Manejar error
         console.error('Error:', error.message);
         alert('Error: ' + error.message);
