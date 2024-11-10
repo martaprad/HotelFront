@@ -4,8 +4,8 @@ document.getElementById('reservas-form').addEventListener('submit', function(eve
     let fInicio = document.getElementById('fechaInicio').value;
     let fFin = document.getElementById('fechaFin').value;
     let habTipoId = document.getElementById('tipoHab').value;
-    //let transf = document.getElementById('transfer').value;
-    //let actividades = document.getElementById('actividades');
+    let transf = document.getElementById('transfer').value;
+    let actividades = document.getElementById('actividades');
     //let tipoActividad = [];
     //let listActividades = {tipoActividad : []};
 
@@ -22,10 +22,10 @@ document.getElementById('reservas-form').addEventListener('submit', function(eve
         });
         //listActividades = { tipoActividad: listActividades }; 
 
-        transf = {tipoTraslado: transf}; 
+        transf = {tipoTraslado: transf}; */
 
-        alert(fInicio + " " + fFin + " " + habitacionTipoId +" " + listActividades + " " + transf);*/
-        alert(fInicio + " " + fFin + " " + habTipoId );
+        alert(fInicio + " " + fFin + " " + habTipoId +" " + actividades + " " + transf);
+        
     } else {
 
         alert("Tienes que seleccionar una habitación");
@@ -47,9 +47,19 @@ document.getElementById('reservas-form').addEventListener('submit', function(eve
         body: JSON.stringify({
             fechaInicio: fInicio,
             fechaFin: fFin,
-            habitacionTipoId: habTipoId
-            //actividadDTOList: listActividades,
-            //trasladoDTO: transf
+            habitacionTipoId: habTipoId,
+            actividadDTOList: [
+                { 
+                    tipoActividad : "SURF"
+                },
+                {
+                    tipoActividad : "SPA"
+                }
+        
+            ],
+            trasladoDTO: {
+                tipoTraslado : "IDAVUELTA"
+            }
             })
         
     })
