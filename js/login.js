@@ -1,3 +1,14 @@
+// Función para mostrar alertas con Bootstrap
+function showAlert(message, type) {
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+}
+
 document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault();  // Prevenir el envío del formulario
 
@@ -35,7 +46,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     .catch(error => {
         // Manejar error
         console.error('Error:', error.message);
-        alert('Error: ' + error.message);
+        showAlert('Error: ' + error.message, 'danger');
     });
 
 });

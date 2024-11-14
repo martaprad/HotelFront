@@ -1,3 +1,14 @@
+// Función para mostrar alertas con Bootstrap
+function showAlert(message, type) {
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+}
+
 document.getElementById('signup-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevenir el envío del formulario
     
@@ -18,28 +29,28 @@ document.getElementById('signup-form').addEventListener('submit', function(event
 
     // Verificar si la contraseña cumple con los requisitos
     if (!passwordRegex.test(password)) {
-        alert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial.');
+        showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial.', 'warning');
         event.preventDefault();  // Evita el envío del formulario
         return;
     }
 
     // Verificar si las contraseñas coinciden
     if (password !== re_password) {
-        alert('Las contraseñas no coinciden.');
+        showAlert('Las contraseñas no coinciden.', 'danger');
         event.preventDefault();  // Evita el envío del formulario
         return;
     }
 
     // Verificar si el teléfono tiene 9 dígitos
     if (!telefonoRegex.test(telefono)) {
-        alert('El teléfono debe tener 9 dígitos.');
+        showAlert('El teléfono debe tener 9 dígitos.', 'warning');
         event.preventDefault();  // Evita el envío del formulario
         return;
     }
 
     // Verificar si el email tiene el formato correcto
     if (!emailRegex.test(email)) {
-        alert('Por favor, introduce un email válido (ejemplo: algo@algo.com).');
+        showAlert('Por favor, introduce un email válido (ejemplo: algo@algo.com).', 'warning');
         event.preventDefault();  // Evita el envío del formulario
         return;
     }
@@ -69,15 +80,16 @@ document.getElementById('signup-form').addEventListener('submit', function(event
         })
         .then(data => {
             // Manejar respuesta exitosa
-            alert('Éxito: ' + data); // Muestra el mensaje del servidor
+            showAlert('Éxito: ' + data, 'success'); // Muestra el mensaje del servidor
             // Puedes redirigir al usuario o limpiar el formulario aquí
-            document.getElementById('signup-form').reset();
-            window.location.href = 'login.html';
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000); // Redirigir después de 2 segundos
         })
         .catch(error => {
             // Manejar error
             console.error('Error:', error.message);
-            alert('Error: ' + error.message);
+            showAlert('Error: ' + error.message, 'danger');
         });
     };
 
