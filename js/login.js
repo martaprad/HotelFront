@@ -34,7 +34,6 @@ document.getElementById('login-form').addEventListener('submit', function(event)
 
     .catch(error => {
         // Manejar error
-        console.error('Error:', error.message);
         alert('Error: ' + error.message);
     });
 

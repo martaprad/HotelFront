@@ -75,12 +75,16 @@ document.getElementById('reservas-form').addEventListener('submit', function (ev
 
                         // Manejar respuesta exitosa
                         if (habTipoId == "1") {
-                            alert("Ha reservado una habitación Double desde " + fInicio + " hasta " + fFin + " el precio total es " + data);
+                            alert("Ha reservado una habitación Doble desde " + fInicio.split("-").reverse().join("-") + 
+                            " hasta " + fFin.split("-").reverse().join("-") + " el precio total es " + data);
                         } else if (habTipoId == "2") {
-                            alert("Ha reservado una habitación Triple desde " + fInicio + " hasta " + fFin + " el precio total es " + data);
+                            alert("Ha reservado una habitación Triple desde " + fInicio.split("-").reverse().join("-") + 
+                            " hasta " + fFin.split("-").reverse().join("-") + " el precio total es " + data);
                         } else {
-                            alert("Ha reservado una habitación Deluxe desde " + fInicio + " hasta " + fFin + " el precio total es " + data);
+                            alert("Ha reservado una habitación Deluxe desde " + fInicio.split("-").reverse().join("-") + 
+                            " hasta " + fFin.split("-").reverse().join("-") + " el precio total es " + data);
                         }
+                        //window.location.href = 'listaReservas.html';
                         return data;
                     })
                     .catch(error => {
@@ -88,7 +92,7 @@ document.getElementById('reservas-form').addEventListener('submit', function (ev
                         console.error('Error:', error.message);
                         alert('Error: ' + error.message);
                     });
-
+            
             return data;
         })
 
@@ -98,5 +102,7 @@ document.getElementById('reservas-form').addEventListener('submit', function (ev
         });
 
 });
+
+
 
 
