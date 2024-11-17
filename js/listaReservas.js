@@ -25,59 +25,63 @@ document.getElementById('verReservas').addEventListener('click', function (event
             datosJSON = JSON.parse(data);
             var texto = "";
 
-            // Recorrer JSON para imprimir los datos
-            for (var reservas in datosJSON) {
+            if (datosJSON.length ===0) {
+                alert("No tiene reservas a su nombre");
+            } else {
+                // Recorrer JSON para imprimir los datos
+                for (var reservas in datosJSON) {
 
-                //Guardamos en un array el id de las reservas usuario loggeado
-                arrayId.push(datosJSON[reservas].id);
+                    //Guardamos en un array el id de las reservas usuario loggeado
+                    arrayId.push(datosJSON[reservas].id);
 
-                texto += "- Reserva (id: " + datosJSON[reservas].id + "): ";
+                    texto += "- Reserva (id: " + datosJSON[reservas].id + "): ";
 
-                if (datosJSON[reservas].habitacionTipoId === "1") {
-                    texto += "habitación Doble";
-                } else if (datosJSON[reservas].habitacionTipoId === "2") {
-                    texto += "habitación Triple";
-                } else {
-                    texto += "habitación Deluxe";
+                    if (datosJSON[reservas].habitacionTipoId === "1") {
+                        texto += "habitación Doble";
+                    } else if (datosJSON[reservas].habitacionTipoId === "2") {
+                        texto += "habitación Triple";
+                    } else {
+                        texto += "habitación Deluxe";
+                    }
+
+                    texto += " desde el: " + datosJSON[reservas].fechaInicio.split("-").reverse().join("-") + "<br>";
+                    texto += " hasta: " + datosJSON[reservas].fechaFin.split("-").reverse().join("-");
+                    texto += ", actividades: ";
+
+                    var actListJSON = datosJSON[reservas].actividadDTOList;
+
+                    for (var actividad in actListJSON) {
+                        texto += actListJSON[actividad].tipoActividad + ", ";
+                    }
+
+                    if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDAVUELTA") {
+                        texto += "<br>transfer: ida y vuelta";
+                    } else if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDA") {
+                        texto += "<br>transfer: ida";
+                    } else {
+                        texto += "<br>transfer: no reservado";
+                    };
+
+                    texto += ",  estado: " + datosJSON[reservas].estado + "<br>";
+
                 }
 
-                texto += " desde el: " + datosJSON[reservas].fechaInicio.split("-").reverse().join("-") + "<br>";
-                texto += " hasta: " + datosJSON[reservas].fechaFin.split("-").reverse().join("-");
-                texto += ", actividades: ";
-
-                var actListJSON = datosJSON[reservas].actividadDTOList;
-
-                for (var actividad in actListJSON) {
-                    texto += actListJSON[actividad].tipoActividad + ", ";
-                }
-
-                if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDAVUELTA") {
-                    texto += "<br>transfer: ida y vuelta";
-                } else if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDA") {
-                    texto += "<br>transfer: ida";
-                } else {
-                    texto += "<br>transfer: no reservado";
-                };
-
-                texto += ",  estado: " + datosJSON[reservas].estado + "<br>";
-
+                infoReservas.innerHTML += texto;
+                return data;
             }
-
-            infoReservas.innerHTML += texto;
-            return data;
         })
 
-        .catch(error => {
-            // Manejar error
-            alert('Error: ' + error.message)
-        });
+        .catch (error => {
+        // Manejar error
+        alert('Para poder imprimir las reservas debe acceder a su cuenta de usuario');
+    });
 
 });
 
 
 document.getElementById('borrarReserva').addEventListener('click', function (event) {
 
-    var idReserva = parseInt(document.getElementById("textArea").value);
+    var idReserva = parseInt(document.getElementById("idCancelar").value);
 
     //Si el id está en el array del usuario hacemos la llamada a la API
     if (arrayId.includes(idReserva)) {
