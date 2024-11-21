@@ -1,7 +1,20 @@
+// Función para mostrar alertas con Bootstrap
+function showAlert(message, type) {
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+}
+
 token = localStorage.getItem('token');
 var arrayId = [];
 
 document.getElementById('verReservas').addEventListener('click', function (event) {
+    // Vacío el contenido anterior de infoReservas para evitar que se acumulen los datos
+    infoReservas.innerHTML = "";
 
     // Hacer la llamada a la API de reservas
     fetch('http://localhost:8080/reservas', {
@@ -26,7 +39,7 @@ document.getElementById('verReservas').addEventListener('click', function (event
             var texto = "";
 
             if (datosJSON.length ===0) {
-                alert("No tiene reservas a su nombre");
+                showAlert("No tiene reservas a su nombre", 'warning');
             } else {
                 // Recorrer JSON para imprimir los datos
                 for (var reservas in datosJSON) {
@@ -73,7 +86,7 @@ document.getElementById('verReservas').addEventListener('click', function (event
 
         .catch (error => {
         // Manejar error
-        alert('Para poder imprimir las reservas debe acceder a su cuenta de usuario');
+        showAlert('Para poder imprimir las reservas debe acceder a su cuenta de usuario', 'warning');
     });
 
 });
@@ -104,16 +117,16 @@ document.getElementById('borrarReserva').addEventListener('click', function (eve
             })
             .then(data => {
                 // Manejar respuesta exitosa
-                alert(data);
+                showAlert(data, 'success');
             })
             .catch(error => {
                 // Manejar error
-                alert('Error: ' + error.message);
+                showAlert('Error: ' + error.message, 'danger');
             });
 
 
     } else {
-        alert("Debe introducir el id de una de sus reservas");
+        showAlert("Debe introducir el id de una de sus reservas", 'warning');
     }
 
 });
