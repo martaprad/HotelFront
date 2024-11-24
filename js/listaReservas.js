@@ -120,7 +120,8 @@ document.getElementById('verReservas').addEventListener('click', function (event
             })
             .then(data => {
                 // Manejar respuesta exitosa
-                showAlert(data, 'success');
+                infoReservas.innerHTML ="";
+                showAlert('Reserva cancelada', 'success');
             })
             .catch(error => {
                 // Manejar error
