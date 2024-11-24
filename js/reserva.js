@@ -46,11 +46,6 @@ document.getElementById('reservas-form').addEventListener('submit', function (ev
             }
         };
 
-        // //Recorrer las actividades seleccionadas 
-        // for (let i = 0; i < actividadesList.selectedOptions.length; i++) {
-        //     myJson.actividadDTOList.push({ tipoActividad: actividadesList.selectedOptions[i].value });
-        // }
-
         // Recorrer las actividades seleccionadas
         actividadesList.forEach(checkbox => {
             if (checkbox.checked) {
@@ -85,7 +80,6 @@ document.getElementById('reservas-form').addEventListener('submit', function (ev
                 // Hacer la llamada a la API calcularPrecio
                 fetch('http://localhost:8080/reservas/calcularPrecio', {
                     method: 'POST',
-                    //mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
@@ -114,7 +108,7 @@ document.getElementById('reservas-form').addEventListener('submit', function (ev
                             showAlert("Ha reservado una habitación Deluxe desde el " + fInicio.split("-").reverse().join("-") +
                                 " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
                         }
-                        //window.location.href = 'listaReservas.html';
+                        window.location.href = 'listaReservas.html';
                         return data;
                     })
                     .catch(error => {
@@ -132,7 +126,3 @@ document.getElementById('reservas-form').addEventListener('submit', function (ev
             });
     }
 });
-
-
-
-
