@@ -1,3 +1,14 @@
+// Función para mostrar alertas con Bootstrap
+function showAlert(message, type) {
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+}
+
 let token = localStorage.getItem('token');
 
 //Si hay usuario logueado puede realizar la reserva
@@ -31,6 +42,37 @@ if (token) {
                 actividadDTOList: [],
                 trasladoDTO: {
                     tipoTraslado: transf
+=======
+        // //Recorrer las actividades seleccionadas 
+        // for (let i = 0; i < actividadesList.selectedOptions.length; i++) {
+        //     myJson.actividadDTOList.push({ tipoActividad: actividadesList.selectedOptions[i].value });
+        // }
+
+        // Recorrer las actividades seleccionadas
+        actividadesList.forEach(checkbox => {
+            if (checkbox.checked) {
+                myJson.actividadDTOList.push({ tipoActividad: checkbox.value });
+            }
+        });
+
+        // Hacer la llamada a la API de reservas
+        fetch('http://localhost:8080/reservas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(myJson)
+        })
+
+            .then(response => {
+                if (response.ok) {
+                    // La respuesta es exitosa (código 2xx)
+                    return response.text();
+                } else {
+                    // La respuesta tiene un código de error
+                    return response.text().then(errorMessage => { throw new Error(errorMessage); });
+>>>>>>> b60765204bb100110c11bf8897329c1d0cafdab7
                 }
             };
 
@@ -57,6 +99,21 @@ if (token) {
                         // La respuesta tiene un código de error
                         return response.text().then(errorMessage => { throw new Error(errorMessage); });
                     }
+=======
+            .then(data => {
+                // Manejar respuesta exitosa
+                //showAlert("Ha reservado una habitacion " + data, 'success');
+
+                // Hacer la llamada a la API calcularPrecio
+                fetch('http://localhost:8080/reservas/calcularPrecio', {
+                    method: 'POST',
+                    //mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(myJson)
+>>>>>>> b60765204bb100110c11bf8897329c1d0cafdab7
                 })
 
                 .then(data => {
@@ -83,6 +140,39 @@ if (token) {
                             }
                         })
                         .then(data => {
+=======
+                    .then(data => {
+
+                        // Manejar respuesta exitosa
+                        if (habTipoId == "1") {
+                            showAlert("Ha reservado una habitación Doble desde el " + fInicio.split("-").reverse().join("-") +
+                                " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
+                        } else if (habTipoId == "2") {
+                            showAlert("Ha reservado una habitación Triple desde el " + fInicio.split("-").reverse().join("-") +
+                                " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
+                        } else {
+                            showAlert("Ha reservado una habitación Deluxe desde el " + fInicio.split("-").reverse().join("-") +
+                                " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
+                        }
+                        //window.location.href = 'listaReservas.html';
+                        return data;
+                    })
+                    .catch(error => {
+                        // Manejar error
+                        console.error('Error:', error.message);
+                        showAlert('Error: ' + error.message, 'danger');
+                    });
+
+                return data;
+            })
+            
+            .catch(error => {
+                // Manejar error
+                showAlert('Error: ' + error.message, 'danger');
+            });
+    }
+});
+>>>>>>> b60765204bb100110c11bf8897329c1d0cafdab7
 
                             // Manejar respuesta exitosa
                             if (habTipoId == "1") {
