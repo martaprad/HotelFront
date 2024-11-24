@@ -1,6 +1,17 @@
 window.addEventListener("load", iniciar);
 
 function iniciar() {
+    // Función para mostrar alertas con Bootstrap
+    function showAlert(message, type) {
+        const alertContainer = document.getElementById('alert-container');
+        alertContainer.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    }
+
     let estrellas = document.getElementsByName('rating');
     token = localStorage.getItem('token');
 
@@ -22,7 +33,7 @@ function iniciar() {
 
             //Se debe introducir reseña y puntuación
             if (puntuacion.length === 0 || resena.length === 0) {
-                alert("Debe introducir reseña y puntuación");
+                showAlert("Introduzca reseña y puntuación", 'warning');
 
             } else {
                 // Hacer la llamada a la API de reseñas
@@ -48,7 +59,7 @@ function iniciar() {
                     })
                     .then(data => {
                         // Manejar respuesta exitosa
-                        alert("Reseña guardada");
+                        showAlert("Reseña guardada", 'success');
                         // Resetear el formulario después de una respuesta exitosa
                         document.getElementById('resenas-form').reset();
                         return data;
@@ -65,7 +76,7 @@ function iniciar() {
         //Si el usuario no se ha logueado se dehabilita el botón y se informa
     } else {
         document.getElementById("enviarResena").disabled = true;
-        alert("Debe de acceder a su cuenta de usuario antes de realizar una reserva");
+        showAlert("Debe de acceder a su cuenta de usuario antes de realizar una reserva", 'warning');
     }
 
 }

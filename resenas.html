@@ -48,15 +48,20 @@
         <section class="login d-flex justify-content-center align-items-center h-100 w-75">
             <div class="card p-4 shadow-lg" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
         
-                <!-- Escribir reseña -->        
+                <!-- Formulario reseña -->        
                 <form method="POST" id="resenas-form" class="resenas-form">
                     <h4 class="text-center mb-4" style="font-family: 'Radley', serif;">Escribir Reseña</h2>
         
+                        <!-- Contenedor de mensajes de alerta -->
+                        <div id="alert-container"></div>
+
+                        <!-- Escribir reseña-->
                         <div data-mdb-input-init class="form-outline">
                             <textarea class="form-control" id="textAreaResena" rows="3"
                                 placeholder="Escriba aquí su reseña"></textarea>
                         </div>
         
+                        <!-- Puntuación reseña-->
                         <div class="rating" required>
                             <input type="radio" id="star5" name="rating" value="five" /><label for="star5" title="Rocks!">5
                                 stars</label>
@@ -70,6 +75,7 @@
                                 title="Sucks big time">1 star</label>
                         </div><br>
         
+                        <!--Enviar reseña-->
                         <div class="d-grid mt-3">
                             <button type="submit" id="enviarResena" class="btn btn-primary"
                                 style="background-color: #f7931e; color: white;">Enviar Reseña</button>
