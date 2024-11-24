@@ -44,13 +44,13 @@ function iniciar() {
                 texto += `<span class="star-rated">${estrellas}</span><br><br>`;
             }
             // Añadir el texto con las estrellas al contenedor en el HTML
-            infoListaEstrellas.innerHTML += texto;
+            infoListaResenas.innerHTML += texto;
             return data;
 
         })
 
         .catch(error => {
             // Manejar error
-            alert('Error' + errorMessage);
+            showAlert('Error: ' + error.message, 'danger');
         });
 }

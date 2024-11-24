@@ -2,22 +2,22 @@ window.addEventListener("load", iniciar);
 
 function iniciar() {
     // Función para mostrar alertas con Bootstrap
-function showAlert(message, type) {
-    const alertContainer = document.getElementById('alert-container');
-    alertContainer.innerHTML = `
+    function showAlert(message, type) {
+        const alertContainer = document.getElementById('alert-container');
+        alertContainer.innerHTML = `
         <div class="alert alert-${type} alert-dismissible fade show" role="alert">
             ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `;
-}
+    }
 
-token = localStorage.getItem('token');
+    token = localStorage.getItem('token');
     var arrayId = [];
 
-document.getElementById('verReservas').addEventListener('click', function (event) {
-    // Vacío el contenido anterior de infoReservas para evitar que se acumulen los datos
-    infoReservas.innerHTML = "";
+    document.getElementById('verReservas').addEventListener('click', function (event) {
+        // Vacío el contenido anterior de infoReservas para evitar que se acumulen los datos
+        infoReservas.innerHTML = "";
 
         // Hacer la llamada a la API de reservas
         fetch('http://localhost:8080/reservas', {
@@ -41,11 +41,11 @@ document.getElementById('verReservas').addEventListener('click', function (event
                 datosJSON = JSON.parse(data);
                 var texto = "";
 
-            if (datosJSON.length ===0) {
-                showAlert("No tiene reservas a su nombre", 'warning');
-            } else {
-                // Recorrer JSON para imprimir los datos
-                for (var reservas in datosJSON) {
+                if (datosJSON.length === 0) {
+                    showAlert("No tiene reservas a su nombre", 'warning');
+                } else {
+                    // Recorrer JSON para imprimir los datos
+                    for (var reservas in datosJSON) {
 
                         //Guardamos en un array el id de las reservas usuario loggeado
                         arrayId.push(datosJSON[reservas].id);
@@ -87,51 +87,52 @@ document.getElementById('verReservas').addEventListener('click', function (event
                 }
             })
 
-        .catch (error => {
-        // Manejar error
-        showAlert('Para poder imprimir las reservas debe acceder a su cuenta de usuario', 'warning');
-    });
+            .catch(error => {
+                // Manejar error
+                showAlert('Para poder imprimir las reservas debe acceder a su cuenta de usuario', 'warning');
+            });
 
     });
 
 
-    document.getElementById('borrarReserva').addEventListener('click', function (event) {
+    document.getElementById('cancelarReserva').addEventListener('click', function (event) {
 
         var idReserva = parseInt(document.getElementById("idCancelar").value);
 
         //Si el id está en el array del usuario hacemos la llamada a la API
         if (arrayId.includes(idReserva)) {
 
-        fetch('http://localhost:8080/reservas/${idReserva}'.replace('${idReserva}', idReserva), {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-        })
-            .then(response => {
-                if (response.ok) {
-                    // La respuesta es exitosa (código 2xx)
-                    return response.text();
-                } else {
-                    // La respuesta tiene un código de error
-                    return response.text().then(errorMessage => { throw new Error(errorMessage); });
-                }
+            fetch('http://localhost:8080/reservas/${idReserva}'.replace('${idReserva}', idReserva), {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
             })
-            .then(data => {
-                // Manejar respuesta exitosa
-                infoReservas.innerHTML ="";
-                showAlert('Reserva cancelada', 'success');
-            })
-            .catch(error => {
-                // Manejar error
-                showAlert('Error: ' + error.message, 'danger');
-            });
+                .then(response => {
+                    if (response.ok) {
+                        // La respuesta es exitosa (código 2xx)
+                        return response.text();
+                    } else {
+                        // La respuesta tiene un código de error
+                        return response.text().then(errorMessage => { throw new Error(errorMessage); });
+                    }
+                })
+                .then(data => {
+                    // Manejar respuesta exitosa
+                    infoReservas.innerHTML = "";
+                    document.getElementById("idCancelar").value = "";
+                    showAlert('Reserva cancelada', 'success');
+                })
+                .catch(error => {
+                    // Manejar error
+                    showAlert('Error: ' + error.message, 'danger');
+                });
 
 
-    } else {
-        showAlert("Debe introducir el id de una de sus reservas", 'warning');
-    }
+        } else {
+            showAlert("Debe introducir el id de una de sus reservas", 'warning');
+        }
 
     });
 
