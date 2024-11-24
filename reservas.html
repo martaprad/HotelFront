@@ -39,11 +39,11 @@
 
     <!-- Contenido principal -->
     <main class="py-5 min-vh-100" style="background-color: #f5f5dc65;"> 
-        <section class="signup" style="padding-top: 50;">
+        <section class="booking" style="padding-top: 50;">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-6">
                     <div class="card p-4 shadow-lg text-center" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9); min-width: 300px;"> <!-- Bordes redondeados y sombra -->
-                        <form method="POST" id="reservas-form" class="signup-form">
+                        <form method="POST" id="reservas-form" class="booking-form">
                             <h2 class="form-title text-center mb-4">Realizar Reserva</h2>
                             <!-- Fecha inicio de reserva -->
                             <div class="form-group mb-3">  
@@ -90,16 +90,13 @@
                             </div>
                             <!-- Botón para confirmar la reserva con color personalizado -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary" style="background-color: #f7931e; color: white;">REALIZAR RESERVA</button>
+                                <button type="submit" id="realizarReserva" class="btn btn-primary" style="background-color: #f7931e; color: white;">REALIZAR RESERVA</button>
                             </div>
 
-                            <!--<div class="mt-3 d-grid">
-                                <button type="button" id="precio" class="btn btn-primary" style="background-color: #f7931e; color: white;">VER PRECIO RESERVA</button>
-                            </div> -->
                         </form>     
                         <!-- Acceso a cuenta login -->
                         <p class="mt-3 text-center">
-                            Para realizar una reserva debes acceder a tu cuenta de usuario <a href="login.html" class="loginhere-link">Accede aquí</a>
+                            Acceda a su cuenta de usuario <a href="login.html" class="loginhere-link">aquí</a>
                         </p>
                     </div>
                 </div>
