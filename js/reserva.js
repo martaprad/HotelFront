@@ -17,6 +17,7 @@ if (token) {
     document.getElementById('reservas-form').addEventListener('submit', function (event) {
         event.preventDefault();  // Prevenir el envío del formulario
 
+
         //Validamos las fechas
         let fHoy = new Date().toISOString();
         let fechaActual = fHoy.substring(0, 10);
@@ -42,7 +43,7 @@ if (token) {
                 actividadDTOList: [],
                 trasladoDTO: {
                     tipoTraslado: transf
-=======
+
         // //Recorrer las actividades seleccionadas 
         // for (let i = 0; i < actividadesList.selectedOptions.length; i++) {
         //     myJson.actividadDTOList.push({ tipoActividad: actividadesList.selectedOptions[i].value });
@@ -72,7 +73,6 @@ if (token) {
                 } else {
                     // La respuesta tiene un código de error
                     return response.text().then(errorMessage => { throw new Error(errorMessage); });
->>>>>>> b60765204bb100110c11bf8897329c1d0cafdab7
                 }
             };
 
@@ -91,6 +91,7 @@ if (token) {
                 body: JSON.stringify(myJson)
             })
 
+
                 .then(response => {
                     if (response.ok) {
                         // La respuesta es exitosa (código 2xx)
@@ -99,7 +100,6 @@ if (token) {
                         // La respuesta tiene un código de error
                         return response.text().then(errorMessage => { throw new Error(errorMessage); });
                     }
-=======
             .then(data => {
                 // Manejar respuesta exitosa
                 //showAlert("Ha reservado una habitacion " + data, 'success');
@@ -113,7 +113,6 @@ if (token) {
                         'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify(myJson)
->>>>>>> b60765204bb100110c11bf8897329c1d0cafdab7
                 })
 
                 .then(data => {
@@ -130,6 +129,7 @@ if (token) {
                         },
                         body: JSON.stringify(myJson)
                     })
+
                         .then(response => {
                             if (response.ok) {
                                 // La respuesta es exitosa (código 2xx)
@@ -140,7 +140,7 @@ if (token) {
                             }
                         })
                         .then(data => {
-=======
+
                     .then(data => {
 
                         // Manejar respuesta exitosa
@@ -172,7 +172,6 @@ if (token) {
             });
     }
 });
->>>>>>> b60765204bb100110c11bf8897329c1d0cafdab7
 
                             // Manejar respuesta exitosa
                             if (habTipoId == "1") {
