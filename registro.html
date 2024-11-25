@@ -47,39 +47,42 @@
                 <form method="POST" id="signup-form" class="signup-form">
                     <h2 class="text-center mb-4" style = "font-family: 'Radley', serif;">Registro</h2>
 
+                    <!-- Contenedor de mensajes de alerta -->
+                    <div id="alert-container"></div>
+
                     <!-- Nombre -->
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
+                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
                     </div>
 
                     <!-- Email -->
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                     </div>
 
                     <!-- Teléfono -->
                     <div class="form-group mb-3">
                         <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Teléfono" required>
+                        <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Teléfono">
                     </div>
 
                     <!-- Contraseña -->
                     <div class="form-group mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                     </div>
 
                     <!-- Confirmar Contraseña -->
                     <div class="form-group mb-3">
                         <label for="re_password" class="form-label">Repite tu Password</label>
-                        <input type="password" class="form-control" name="re_password" id="re_password" placeholder="Repite tu password" required>
+                        <input type="password" class="form-control" name="re_password" id="re_password" placeholder="Repite tu password">
                     </div>
 
                     <!-- Aceptar términos -->
                     <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input" name="agree-term" id="agree-term" required>
+                        <input type="checkbox" class="form-check-input" name="agree-term" id="agree-term">
                         <label class="form-check-label" for="agree-term">Acepto los <a href="#" class="term-service">términos del servicio</a></label>
                     </div>
 

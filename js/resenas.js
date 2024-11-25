@@ -76,7 +76,7 @@ function iniciar() {
         //Si el usuario no se ha logueado se dehabilita el botón y se informa
     } else {
         document.getElementById("enviarResena").disabled = true;
-        showAlert("Debe de acceder a su cuenta de usuario antes de realizar una reserva", 'warning');
+        showAlert("Debe de acceder a su cuenta de usuario antes de realizar una reseña", 'warning');
     }
 
 }

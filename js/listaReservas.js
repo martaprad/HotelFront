@@ -15,6 +15,9 @@ function iniciar() {
     token = localStorage.getItem('token');
     var arrayId = [];
 
+    //Si el usuario está logeado
+    if (token) {
+
     document.getElementById('verReservas').addEventListener('click', function (event) {
         // Vacío el contenido anterior de infoReservas para evitar que se acumulen los datos
         infoReservas.innerHTML = "";
@@ -89,7 +92,7 @@ function iniciar() {
 
             .catch(error => {
                 // Manejar error
-                showAlert('Para poder imprimir las reservas debe acceder a su cuenta de usuario', 'warning');
+                showAlert('Para poder ver las reservas debe acceder a su cuenta de usuario', 'warning');
             });
 
     });
@@ -135,5 +138,11 @@ function iniciar() {
         }
 
     });
+
+} else {
+    document.getElementById("verReservas").disabled = true;
+    document.getElementById("cancelarReserva").disabled = true;
+    showAlert("Debe estar logueado para ver la lista de reservas", 'warning');
+}
 
 }

@@ -22,6 +22,11 @@ function iniciar() {
         const email = document.getElementById('email').value;
         const nombre = document.getElementById('nombre').value;
 
+                //Confirmamos que introduce todos los campos
+                if (!nombre || !email || !telefono  || !password) {
+                    showAlert('Debe introducir nombre, email, teléfono y contraseña', 'warning');
+                } else {
+
         // Expresión regular para verificar la contraseña
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -96,6 +101,7 @@ function iniciar() {
                     showAlert('Error: ' + error.message, 'danger');
                 });
         };
+    }
 
     });
 
