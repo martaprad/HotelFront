@@ -103,15 +103,15 @@ function iniciar() {
                             // Manejar respuesta exitosa
                             if (habTipoId == "1") {
                                 showAlert("Ha reservado una habitación Doble desde el " + fInicio.split("-").reverse().join("-") +
-                                    " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
+                                    " hasta el " + fFin.split("-").reverse().join("-") /*+ " el precio total es de " + data + "€"*/, 'success');
                             } else if (habTipoId == "2") {
                                 showAlert("Ha reservado una habitación Triple desde el " + fInicio.split("-").reverse().join("-") +
-                                    " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
+                                    " hasta el " + fFin.split("-").reverse().join("-") /*+ " el precio total es de " + data + "€"*/, 'success');
                             } else {
                                 showAlert("Ha reservado una habitación Deluxe desde el " + fInicio.split("-").reverse().join("-") +
-                                    " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
+                                    " hasta el " + fFin.split("-").reverse().join("-") /*+ " el precio total es de " + data + "€"*/, 'success');
                             }
-                            window.location.href = 'listaReservas.html';
+                            //window.location.href = 'listaReservas.html';
                             return data;
                         })
                         .catch(error => {
