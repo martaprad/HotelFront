@@ -9,14 +9,19 @@ function showAlert(message, type) {
     `;
     }
 
-document.getElementById('signup-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevenir el envío del formulario
-    
-    const password = document.getElementById('password').value;
-    const re_password = document.getElementById('re_password').value;
-    const telefono = document.getElementById('telefono').value;
-    const email = document.getElementById('email').value;
-    const nombre = document.getElementById('nombre').value;
+    document.getElementById('signup-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevenir el envío del formulario
+
+        const password = document.getElementById('password').value;
+        const re_password = document.getElementById('re_password').value;
+        const telefono = document.getElementById('telefono').value;
+        const email = document.getElementById('email').value;
+        const nombre = document.getElementById('nombre').value;
+
+                //Confirmamos que introduce todos los campos
+                if (!nombre || !email || !telefono  || !password) {
+                    showAlert('Debe introducir nombre, email, teléfono y contraseña', 'warning');
+                } else {
 
         // Expresión regular para verificar la contraseña
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -55,42 +60,43 @@ document.getElementById('signup-form').addEventListener('submit', function(event
         return;
     }
 
-    // Si las validaciones son correctas, hacemos la llamada al backend
-    if (password === re_password) {
-        fetch('http://localhost:8080/auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                nombre: nombre,
-                email: email,
-                password: password,
-                telefono: telefono
+        // Si las validaciones son correctas, hacemos la llamada al backend
+        if (password === re_password) {
+            fetch('http://localhost:8080/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nombre: nombre,
+                    email: email,
+                    password: password,
+                    telefono: telefono
+                })
             })
-        })
-        .then(response => {
-            if (response.ok) {
-                // La respuesta es exitosa (código 2xx)
-                return response.text(); // O response.json() si el servidor devuelve JSON
-            } else {
-                // La respuesta tiene un código de error
-                return response.text().then(errorMessage => { throw new Error(errorMessage); });
-            }
-        })
-        .then(data => {
-            // Manejar respuesta exitosa
-            showAlert('Éxito: ' + data, 'success'); // Muestra el mensaje del servidor
-            // Puedes redirigir al usuario o limpiar el formulario aquí
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 2000); // Redirigir después de 2 segundos
-        })
-        .catch(error => {
-            // Manejar error
-            console.error('Error:', error.message);
-            showAlert('Error: ' + error.message, 'danger');
-        });
-    };
+                .then(response => {
+                    if (response.ok) {
+                        // La respuesta es exitosa (código 2xx)
+                        return response.text(); // O response.json() si el servidor devuelve JSON
+                    } else {
+                        // La respuesta tiene un código de error
+                        return response.text().then(errorMessage => { throw new Error(errorMessage); });
+                    }
+                })
+                .then(data => {
+                    // Manejar respuesta exitosa
+                    showAlert('Éxito: ' + data, 'success'); // Muestra el mensaje del servidor
+                    // Puedes redirigir al usuario o limpiar el formulario aquí
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000); // Redirigir después de 2 segundos
+                })
+                .catch(error => {
+                    // Manejar error
+                    console.error('Error:', error.message);
+                    showAlert('Error: ' + error.message, 'danger');
+                });
+        };
+    }
 
 });

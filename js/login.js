@@ -19,40 +19,45 @@ function iniciar() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        // Hacer la llamada a la API de login
-        fetch('http://localhost:8080/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        })
-            .then(response => {
-                if (response.ok) {
-                    // La respuesta es exitosa (código 2xx)
-                    return response.json();
-                } else {
-                    // La respuesta tiene un código de error
-                    return response.text().then(errorMessage => { throw new Error(errorMessage); });
-                }
-            })
+        //Confirmamos que introduce email y password
+        if (!email || !password) {
+            showAlert('Debe introducir email y contraseña', 'warning');
+        } else {
 
-            .then(data => {
-                // Manejar respuesta exitosa
-                localStorage.setItem('token', data.token);
-                window.location.href = 'reservas.html';
-                return data;
+            // Hacer la llamada a la API de login
+            fetch('http://localhost:8080/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
             })
+                .then(response => {
+                    if (response.ok) {
+                        // La respuesta es exitosa (código 2xx)
+                        return response.json();
+                    } else {
+                        // La respuesta tiene un código de error
+                        return response.text().then(errorMessage => { throw new Error(errorMessage); });
+                    }
+                })
 
-            .catch(error => {
-                // Manejar error
-                console.error('Error:', error.message);
-                showAlert('Error: ' + error.message, 'danger');
-            });
+                .then(data => {
+                    // Manejar respuesta exitosa
+                    localStorage.setItem('token', data.token);
+                    window.location.href = 'reservas.html';
+                    return data;
+                })
 
+                .catch(error => {
+                    // Manejar error
+                    console.error('Error:', error.message);
+                    showAlert('Error: ' + error.message, 'danger');
+                });
+        }
     });
 
 }
