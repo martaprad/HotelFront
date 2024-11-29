@@ -28,7 +28,7 @@ function iniciar() {
             let fInicio = document.getElementById('fechaInicio').value;
             let fFin = document.getElementById('fechaFin').value;
 
-            if (!habTipoId || !transf || !actividades) {
+            if (!habTipoId || !transf || !actividadesList) {
                 showAlert('Debe elegir fechas, habitación, actividades y transfer', 'warning');
             } else {
 
@@ -142,9 +142,29 @@ function iniciar() {
             }
         });
 
+        // Añadir la funcionalidad de selección y deselección de checkboxes
+        const actividadNinguna = document.getElementById('actividadNINGUNA');
+        const actividades = document.querySelectorAll('#actividades .form-check-input');
+
+        actividades.forEach(actividad => {
+            actividad.addEventListener('change', function () {
+                if (this.id === 'actividadNINGUNA' && this.checked) {
+                    // Desmarcar todas las demás actividades si se selecciona "SIN ACTIVIDADES"
+                    actividades.forEach(act => {
+                        if (act.id !== 'actividadNINGUNA') {
+                            act.checked = false;
+                        }
+                    });
+                } else if (this.id !== 'actividadNINGUNA' && this.checked) {
+                    // Desmarcar "SIN ACTIVIDADES" si se selecciona cualquier otra actividad
+                    actividadNinguna.checked = false;
+                }
+            });
+        });
+
     } else {
         document.getElementById("realizarReserva").disabled = true;
         showAlert("Debe de acceder a su cuenta de usuario antes de realizar una reserva", 'warning');
     }
-
 }
+
