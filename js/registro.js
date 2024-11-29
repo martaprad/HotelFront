@@ -1,11 +1,7 @@
-window.addEventListener("load", iniciar);
-
-function iniciar() {
-
-    // Función para mostrar alertas con Bootstrap
-    function showAlert(message, type) {
-        const alertContainer = document.getElementById('alert-container');
-        alertContainer.innerHTML = `
+// Función para mostrar alertas con Bootstrap
+function showAlert(message, type) {
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `
         <div class="alert alert-${type} alert-dismissible fade show" role="alert">
             ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -36,33 +32,33 @@ function iniciar() {
         // Expresión regular para verificar el email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        // Verificar si la contraseña cumple con los requisitos
-        if (!passwordRegex.test(password)) {
-            showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial.', 'warning');
-            event.preventDefault();  // Evita el envío del formulario
-            return;
-        }
+    // Verificar si la contraseña cumple con los requisitos
+    if (!passwordRegex.test(password)) {
+        showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial.', 'warning');
+        event.preventDefault();  // Evita el envío del formulario
+        return;
+    }
 
-        // Verificar si las contraseñas coinciden
-        if (password !== re_password) {
-            showAlert('Las contraseñas no coinciden.', 'danger');
-            event.preventDefault();  // Evita el envío del formulario
-            return;
-        }
+    // Verificar si las contraseñas coinciden
+    if (password !== re_password) {
+        showAlert('Las contraseñas no coinciden.', 'danger');
+        event.preventDefault();  // Evita el envío del formulario
+        return;
+    }
 
-        // Verificar si el teléfono tiene 9 dígitos
-        if (!telefonoRegex.test(telefono)) {
-            showAlert('El teléfono debe tener 9 dígitos.', 'warning');
-            event.preventDefault();  // Evita el envío del formulario
-            return;
-        }
+    // Verificar si el teléfono tiene 9 dígitos
+    if (!telefonoRegex.test(telefono)) {
+        showAlert('El teléfono debe tener 9 dígitos.', 'warning');
+        event.preventDefault();  // Evita el envío del formulario
+        return;
+    }
 
-        // Verificar si el email tiene el formato correcto
-        if (!emailRegex.test(email)) {
-            showAlert('Por favor, introduce un email válido (ejemplo: algo@algo.com).', 'warning');
-            event.preventDefault();  // Evita el envío del formulario
-            return;
-        }
+    // Verificar si el email tiene el formato correcto
+    if (!emailRegex.test(email)) {
+        showAlert('Por favor, introduce un email válido (ejemplo: algo@algo.com).', 'warning');
+        event.preventDefault();  // Evita el envío del formulario
+        return;
+    }
 
         // Si las validaciones son correctas, hacemos la llamada al backend
         if (password === re_password) {
@@ -103,6 +99,4 @@ function iniciar() {
         };
     }
 
-    });
-
-}
+});
