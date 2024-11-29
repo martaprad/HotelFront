@@ -41,7 +41,8 @@ function iniciar() {
                 }
 
                 // Agregar las estrellas y aplicar el color amarillo
-                texto += `<span class="star-rated">${estrellas}</span><br><br>`;
+                texto += `<span class="star-rated">${estrellas}</span><br>` +
+                listaResenasJSON[resenas].fechaResena.substring(0,10).split("-").reverse().join("-") +"<br><br>" ;
             }
             // Añadir el texto con las estrellas al contenedor en el HTML
             infoListaResenas.innerHTML += texto;

@@ -53,7 +53,8 @@ function iniciar() {
                         //Guardamos en un array el id de las reservas usuario loggeado
                         arrayId.push(datosJSON[reservas].id);
 
-                        texto += "- Reserva (id: " + datosJSON[reservas].id + "): ";
+                        texto += "- Reserva" +" (id: " + datosJSON[reservas].id + 
+                            ", fecha reserva: "+ datosJSON[reservas].fechaReserva.substring(0,10).split("-").reverse().join("-") + "): ";
 
                         if (datosJSON[reservas].habitacionTipoId === "1") {
                             texto += "habitación Doble";
@@ -63,7 +64,7 @@ function iniciar() {
                             texto += "habitación Deluxe";
                         }
 
-                        texto += " desde el: " + datosJSON[reservas].fechaInicio.split("-").reverse().join("-") + "<br>";
+                        texto += " desde el: " + datosJSON[reservas].fechaInicio.split("-").reverse().join("-");
                         texto += " hasta: " + datosJSON[reservas].fechaFin.split("-").reverse().join("-");
                         texto += ", actividades: ";
 
@@ -74,14 +75,15 @@ function iniciar() {
                         }
 
                         if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDAVUELTA") {
-                            texto += "<br>transfer: ida y vuelta";
+                            texto += "transfer: ida y vuelta";
                         } else if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDA") {
-                            texto += "<br>transfer: ida";
+                            texto += "transfer: ida";
                         } else {
-                            texto += "<br>transfer: no reservado";
+                            texto += "transfer: no reservado";
                         };
 
-                        texto += ",  estado: " + datosJSON[reservas].estado + "<br>";
+                        texto += ",  estado: " + datosJSON[reservas].estado +
+                             ", precio: " + datosJSON[reservas].precio + "€<br>";
 
                     }
 
