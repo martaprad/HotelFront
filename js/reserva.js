@@ -15,13 +15,39 @@ function iniciar() {
     //Logout desde el menú de usuario
     document.getElementById('logout').addEventListener('click', function (event) {
         localStorage.removeItem('token');
+        document.getElementById('fechaInicioGroup').style.display="none";
+        document.getElementById('fechaFinGroup').style.display="none";
+        document.getElementById('habGroup').style.display="none";
+        document.getElementById('activGroup').style.display="none";
+        document.getElementById('transferGroup').style.display="none";
+        document.getElementById('realizarReserva').style.display="none";
+        
+        showAlert("Debe de acceder a su cuenta de usuario antes de realizar una reserva", 'warning');
     });
 
     let token = localStorage.getItem('token');
 
     //Si el usuario está logeado
     if (token) {
+        
+        //Obtenemos el nombre del usuario
+        fetch('http://localhost:8080/auth/cliente', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                let name = data.charAt(0).toUpperCase() + data.slice(1);
+                document.getElementById('navbarDropdown').innerHTML = name; 
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
 
+        //Realizamos reserva con los datos del formulario
         document.getElementById('reservas-form').addEventListener('submit', function (event) {
             event.preventDefault();  // Prevenir el envío del formulario
 
