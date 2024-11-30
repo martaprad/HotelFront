@@ -12,6 +12,11 @@ function iniciar() {
     `;
     }
 
+    //Logout desde el menú de usuario
+    document.getElementById('logout').addEventListener('click', function (event) {
+        localStorage.removeItem('token');
+    });
+
     let token = localStorage.getItem('token');
 
     //Si el usuario está logeado
@@ -163,7 +168,14 @@ function iniciar() {
         });
 
     } else {
-        document.getElementById("realizarReserva").disabled = true;
+        //Si no está logueado no se ven los campos del formulario excepto la alerta
+        document.getElementById('fechaInicioGroup').style.display="none";
+        document.getElementById('fechaFinGroup').style.display="none";
+        document.getElementById('habGroup').style.display="none";
+        document.getElementById('activGroup').style.display="none";
+        document.getElementById('transferGroup').style.display="none";
+        document.getElementById('realizarReserva').style.display="none";
+        
         showAlert("Debe de acceder a su cuenta de usuario antes de realizar una reserva", 'warning');
     }
 }

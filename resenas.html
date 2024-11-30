@@ -13,8 +13,10 @@
     <!-- Fuentes Google API -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&family=Magra&family=Ms+Madi&family=Oooh+Baby&family=Pacifico&family=Radley&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Averia+Libre&family=Magra&family=Ms+Madi&family=Oooh+Baby&family=Pacifico&family=Radley&display=swap"
+        rel="stylesheet">
+
     <!-- Hoja de estilos para las estrellas-->
     <link href="estrellas.css" rel="stylesheet">
 </head>
@@ -30,11 +32,31 @@
                 <div class="collapse navbar-collapse justify-content-center">
                     <ul class="navbar-nav mx-auto w-100 justify-content-center gap-5">
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark fs-4" href="habitaciones.html">Nuestras habitaciones</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark fs-4" href="actividades.html">Actividades</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark fs-4" href="habitaciones.html">Nuestras
+                                habitaciones</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark fs-4" href="actividades.html">Actividades</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="transfer.html">Transfer</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="reservas.html">Reservas</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark fs-4" href="login.html">Login / Registro</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark fs-4" href="login.html">Login / Registro</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark fs-4 dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Menú usuario
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="listaReservas.html">Mis
+                                        Reservas/Cancelar Reserva</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="resenas.html">Escribir
+                                        Reseña</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="#">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,11 +69,11 @@
         <!-- Centrar el formulario en una fila con flex y ancho del contenedor -->
         <section class="login d-flex justify-content-center align-items-center h-100 w-75">
             <div class="card p-4 shadow-lg" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-        
-                <!-- Formulario reseña -->        
+
+                <!-- Formulario reseña -->
                 <form method="POST" id="resenas-form" class="resenas-form">
                     <h4 class="text-center mb-4" style="font-family: 'Radley', serif;">Escribir Reseña</h2>
-        
+
                         <!-- Contenedor de mensajes de alerta -->
                         <div id="alert-container"></div>
 
@@ -60,33 +82,37 @@
                             <textarea class="form-control" id="textAreaResena" rows="3"
                                 placeholder="Escriba aquí su reseña"></textarea>
                         </div>
-        
+
                         <!-- Puntuación reseña-->
-                        <div class="rating" required>
-                            <input type="radio" id="star5" name="rating" value="five" /><label for="star5" title="Rocks!">5
+                        <div id="rating" class="rating" required>
+                            <input type="radio" id="star5" name="rating" value="five" /><label for="star5"
+                                title="Rocks!">5
                                 stars</label>
-                            <input type="radio" id="star4" name="rating" value="four" /><label for="star4" title="Pretty good">4
+                            <input type="radio" id="star4" name="rating" value="four" /><label for="star4"
+                                title="Pretty good">4
                                 stars</label>
-                            <input type="radio" id="star3" name="rating" value="three" /><label for="star3" title="Meh">3
+                            <input type="radio" id="star3" name="rating" value="three" /><label for="star3"
+                                title="Meh">3
                                 stars</label>
-                            <input type="radio" id="star2" name="rating" value="two" /><label for="star2" title="Kinda bad">2
+                            <input type="radio" id="star2" name="rating" value="two" /><label for="star2"
+                                title="Kinda bad">2
                                 stars</label>
                             <input type="radio" id="star1" name="rating" value="one" /><label for="star1"
                                 title="Sucks big time">1 star</label>
                         </div><br>
-        
+
                         <!--Enviar reseña-->
                         <div class="d-grid mt-3">
                             <button type="submit" id="enviarResena" class="btn btn-primary"
                                 style="background-color: #f7931e; color: white;">Enviar Reseña</button>
                         </div>
-                </form>      
+                </form>
 
                 <!-- Acceso a cuenta login -->
                 <p class="text-center">
                     Acceda a su cuenta de usuario <a href="login.html" class="loginhere-link">aquí</a>
                 </p>
-            </div>    
+            </div>
         </section>
     </div>
 

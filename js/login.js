@@ -48,7 +48,11 @@ function iniciar() {
                 .then(data => {
                     // Manejar respuesta exitosa
                     localStorage.setItem('token', data.token);
-                    window.location.href = 'reservas.html';
+                    showAlert('Ha accedido a su cuenta de usuario', 'success');
+                    document.getElementById('emailGroup').style.display="none";
+                    document.getElementById('passwordGroup').style.display="none";
+                    document.getElementById('botLogin').style.display="none";
+                    setTimeout(function(){window.location.href='habitaciones.html';}, 3000);
                     return data;
                 })
 
