@@ -43,7 +43,7 @@
         style="background-image: url('images/foto_12_login.png'); background-size: cover; background-position: center; min-height: 100vh;">
         <!-- Centrar el formulario en una fila con flex y ancho del contenedor -->
         <section class="login d-flex justify-content-center align-items-center h-100 w-75">
-            <div class="card p-4 shadow-lg text-center"
+            <div class="card p-4 shadow-lg text-left"
                 style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9); min-width: 300px;">
                 <div class="card p-4 shadow-lg"
                     style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
@@ -55,13 +55,13 @@
                         <div id="alert-container"></div>
 
                         <!-- Email -->
-                        <div class="form-group mb-3">
+                        <div id="emailGroup" class="form-group mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                         </div>
 
                         <!-- Contraseña -->
-                        <div class="form-group mb-3">
+                        <div id="passwordGroup" class="form-group mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password"
                                 placeholder="Password">
@@ -69,7 +69,7 @@
 
                         <!-- Botón de iniciar sesión con color personalizado -->
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary"
+                            <button id="botLogin" type="submit" class="btn btn-primary"
                                 style="background-color: #f7931e; color: white;">INICIAR SESIÓN</button>
                         </div>
                     </form>

@@ -12,6 +12,11 @@ function iniciar() {
     `;
     }
 
+    //Logout desde el menú de usuario
+    document.getElementById('logout').addEventListener('click', function (event) {
+        localStorage.removeItem('token');
+    });
+
     let estrellas = document.getElementsByName('rating');
     token = localStorage.getItem('token');
 
@@ -75,8 +80,11 @@ function iniciar() {
 
         //Si el usuario no se ha logueado se dehabilita el botón y se informa
     } else {
-        document.getElementById("enviarResena").disabled = true;
-        showAlert("Debe de acceder a su cuenta de usuario antes de realizar una reseña", 'warning');
+        
+        document.getElementById('rating').style.display="none";
+        document.getElementById('textAreaResena').style.display="none";
+        document.getElementById('enviarResena').style.display="none";
+        showAlert('Para escribir una reseña debe de acceder a su cuenta de usuario', 'warning');
     }
 
 }

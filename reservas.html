@@ -31,6 +31,22 @@
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="transfer.html">Transfer</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="reservas.html">Reservas</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="login.html">Login / Registro</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark fs-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Menú usuario
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li><a class="dropdown-item nav-link text-dark fs-4" href="listaReservas.html">Mis Reservas/Cancelar Reserva</a></li>
+                              <li><a class="dropdown-item nav-link text-dark fs-4" href="resenas.html">Escribir Reseña</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <!--<li>
+                                <form>
+                                  <button id="logout" type="button" class="btn btn-logout">Logout</button>
+                                </form> 
+                              </li> -->
+                              <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="#">Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,19 +66,19 @@
                             <div id="alert-container"></div>
 
                             <!-- Fecha inicio de reserva -->
-                            <div class="form-group mb-3">  
+                            <div id="fechaInicioGroup" class="form-group mb-3">  
                                 <label for="fechaInicio" class="form-label">Fecha de entrada:</label>  
                                 <input type="date" id="fechaInicio" min="2024-11-01" max="2025-12-31" step="1">
                             </div>
 
                             <!--Fecha fin de reserva -->
-                            <div class="form-group mb-3">
+                            <div id="fechaFinGroup" class="form-group mb-3">
                                 <label for="fechaFin" class="form-label">Fecha de salida:</label>
                                 <input type="date" id="fechaFin" min="2024-11-01" max="2025-12-31" step="1">
                             </div>
 
                             <!-- Tipo de Habitación -->
-                            <div class="form-group mb-3">
+                            <div id="habGroup" class="form-group mb-3">
                                 <label for="tipoHab" class="form-label">Elige habitación:</label>
                                 <select class="form-select" name="tipoHab" id="tipoHab">
                                     <option></option>
@@ -73,7 +89,7 @@
                             </div>
 
                             <!-- Actividades -->
-                            <div class="form-group mb-3">
+                            <div id="activGroup" class="form-group mb-3">
                                 <label for="actividades" class="form-label">Añade actividades a tu reserva:</label>
                                 <div id="actividades" class="text-start">
                                     <div class="form-check">
@@ -108,7 +124,7 @@
                             </div>
 
                             <!-- Transfer -->
-                            <div class="form-group mb-3">
+                            <div id="transferGroup" class="form-group mb-3">
                                 <label for="transfer" class="form-label">Añade transfer a tu reserva:</label>
                                 <select class="form-select" name="transfer" id="transfer">
                                     <option></option>
