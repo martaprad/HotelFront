@@ -15,6 +15,10 @@ function iniciar() {
     //Logout desde el menú de usuario
     document.getElementById('logout').addEventListener('click', function (event) {
         localStorage.removeItem('token');
+        document.getElementById('verReservas').style.display="none";
+        document.getElementById('idCancelar').style.display="none";
+        document.getElementById('cancelarReserva').style.display="none";
+        showAlert("Debe estar logueado para ver la lista de reservas", 'warning');
     });
 
     token = localStorage.getItem('token');
@@ -23,7 +27,22 @@ function iniciar() {
     //Si el usuario está logeado
     if (token) {
 
-        document.getElementById('navbarDropdown').innerHTML = "Pepe";
+        //Obtenemos el nombre del usuario
+        fetch('http://localhost:8080/auth/cliente', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                let name = data.charAt(0).toUpperCase() + data.slice(1);
+                document.getElementById('navbarDropdown').innerHTML = name; 
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
 
             document.getElementById('verReservas').addEventListener('click', function (event) {
                 // Vacío el contenido anterior de infoReservas para evitar que se acumulen los datos
@@ -149,8 +168,10 @@ function iniciar() {
         });
 
     } else {
-        document.getElementById("verReservas").disabled = true;
-        document.getElementById("cancelarReserva").disabled = true;
+        //Si no está logueado se oculta el formulario, excepto la alerta
+        document.getElementById('verReservas').style.display="none";
+        document.getElementById('idCancelar').style.display="none";
+        document.getElementById('cancelarReserva').style.display="none";
         showAlert("Debe estar logueado para ver la lista de reservas", 'warning');
     }
 

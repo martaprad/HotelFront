@@ -15,6 +15,10 @@ function iniciar() {
     //Logout desde el menú de usuario
     document.getElementById('logout').addEventListener('click', function (event) {
         localStorage.removeItem('token');
+        document.getElementById('rating').style.display="none";
+        document.getElementById('textAreaResena').style.display="none";
+        document.getElementById('enviarResena').style.display="none";
+        showAlert('Para escribir una reseña debe de acceder a su cuenta de usuario', 'warning');
     });
 
     let estrellas = document.getElementsByName('rating');
@@ -22,6 +26,24 @@ function iniciar() {
 
     //Si el usuario está logeado
     if (token) {
+
+        //Obtenemos el nombre del usuario
+        fetch('http://localhost:8080/auth/cliente', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                let name = data.charAt(0).toUpperCase() + data.slice(1);
+                document.getElementById('navbarDropdown').innerHTML = name; 
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+
 
         document.getElementById('resenas-form').addEventListener('submit', function (event) {
             event.preventDefault();
