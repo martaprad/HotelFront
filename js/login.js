@@ -52,7 +52,7 @@ function iniciar() {
                     document.getElementById('emailGroup').style.display="none";
                     document.getElementById('passwordGroup').style.display="none";
                     document.getElementById('botLogin').style.display="none";
-                    setTimeout(function(){window.location.href='habitaciones.html';}, 3000);
+                    setTimeout(function(){window.location.href='index.html';}, 3000);
                     return data;
                 })
 

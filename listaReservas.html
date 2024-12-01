@@ -49,39 +49,62 @@
         </nav>
     </header>
 
-    <!-- Fondo con imagen -->
+
+    <!-- Fondo sin imagen -->
+    <main class="py-5 min-vh-100" style="background-color: #f5f5dc65;"> 
+        <section class="signup" style="padding-top: 50;">
+            <div class="row justify-content-center">
+
+                <h2 class="text-center mb-4" style = "font-family: 'Radley', serif;">Lista de Reservas</h2>
+
+                <!-- Contenedor de mensajes de alerta -->
+                <div id="alert-container"></div>
+                
+                <!-- Redirige a escribir una reseña
+                <p class="text-center" style="font-family: 'Averia Libre'; font-size: 20px; font-weight: 500; color: #080202cc; margin-top: 20px; margin-right: 60%;">
+                    ¿Quieres dejar una reseña? <a href="resenas.html" class="loginhere-link">Accede aquí</a>
+                </p>-->
+
+                <!--Contenedor para inprimir las reseñas-->
+                <p id="infoReservas" class="text-center mb-2" style="font-family: 'Averia Libre'; font-size: 15px; font-weight: 500; color: #080202cc; margin-top: 10px; margin-left: 10%; margin-right: 10%">
+                </p>
+            
+        </section>
+    </main>
+
+    <!-- Fondo con imagen 
     <div class="d-flex justify-content-center align-items-center vh-100"
         style="background-image: url('images/foto_12_login.png'); background-size: cover; background-position: center; min-height: 100vh;">
-        <!-- Centrar el formulario en una fila con flex y ancho del contenedor -->
+        Centrar el formulario en una fila con flex y ancho del contenedor 
         <section class="signup d-flex justify-content-center align-items-center h-100 w-100">
             <div class="card p-4 shadow-lg" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9); max-width: 500px; width: 90%;">
                 
                     <h2 class="text-center mb-4" style = "font-family: 'Radley', serif;">Lista de Reservas</h2>
                     
-                    <!-- Contenedor de mensajes de alerta -->
+                     Contenedor de mensajes de alerta 
                     <div id="alert-container"></div>
 
-                    <!-- Párrafo donde imprimimos la lista de reservas -->
+                    Párrafo donde imprimimos la lista de reservas 
                     <p id="infoReservas"></p>
                     
-                    <!-- Botón para ver reservas con color personalizado -->
+                     Botón para ver reservas con color personalizado
                     <div class="d-grid mb-3">
                         <button id="verReservas" type="button" class="btn btn-primary" style="background-color: #f7931e; color: white;">VER RESERVAS</button>
                     </div>
 
-                    <!-- Input para escribir el id de la reserva a cancelar -->
+                    Input para escribir el id de la reserva a cancelar
                     <div class="mb-3">
                         <input type="text" id="idCancelar" class="form-control" placeholder="Para cancelar una reserva introduzca el id de la reserva">
                     </div>
 
-                    <!-- Botón para ver borrar una reserva con color personalizado -->
+                    Botón para ver borrar una reserva con color personalizado
                     <div class="d-grid mb-3">
                         <button type="button" id="cancelarReserva" class="btn btn-primary" style="background-color: #f7931e; color: white;">CANCELAR RESERVA</button>
                     </div>
 
             </div>
         </section>
-    </div>
+    </div>-->
 
 
     <!-- Bootstrap JS y dependencias -->
