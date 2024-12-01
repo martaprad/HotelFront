@@ -27,7 +27,7 @@ function iniciar() {
 
     let token = localStorage.getItem('token');
 
-    //Si el usuario está logeado
+    //Si el usuario está logueado
     if (token) {
         
         //Obtenemos el nombre del usuario
@@ -151,7 +151,7 @@ function iniciar() {
                                             showAlert("Ha reservado una habitación Deluxe desde el " + fInicio.split("-").reverse().join("-") +
                                                 " hasta el " + fFin.split("-").reverse().join("-") + " el precio total es de " + data + "€", 'success');
                                         }
-                                        //window.location.href = 'listaReservas.html';
+                                        setTimeout(function(){window.location.href='index.html';}, 3000);
                                         return data;
                                     })
                                     .catch(error => {
