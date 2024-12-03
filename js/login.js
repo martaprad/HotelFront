@@ -20,8 +20,12 @@ function iniciar() {
         const password = document.getElementById('password').value;
 
         //Confirmamos que introduce email y password
-        if (!email || !password) {
-            showAlert('Debe introducir email y contraseña', 'warning');
+        if (!email) {
+            showAlert('Debe introducir email', 'warning');
+
+        } else if (!password){
+            showAlert('Debe introducir la contraseña', 'warning');
+
         } else {
 
             // Hacer la llamada a la API de login
@@ -52,7 +56,7 @@ function iniciar() {
                     document.getElementById('emailGroup').style.display="none";
                     document.getElementById('passwordGroup').style.display="none";
                     document.getElementById('botLogin').style.display="none";
-                    setTimeout(function(){window.location.href='habitaciones.html';}, 3000);
+                    setTimeout(function(){window.location.href='Home.html';}, 3000);
                     return data;
                 })
 
