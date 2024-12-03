@@ -7,7 +7,6 @@ function iniciar() {
         alertContainer.innerHTML = `
         <div class="alert alert-${type} alert-dismissible fade show" role="alert">
             ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `;
     }
@@ -158,7 +157,7 @@ function iniciar() {
         // Funcion para cancelar reserva
         function cancelarReserva(idReserva, row) {
             idReserva=parseInt(idReserva);
-            alert(idReserva);
+            showAlert(idReserva , 'warning');
             const token = localStorage.getItem('token');
             fetch('http://localhost:8080/reservas/${idReserva}'.replace('${idReserva}', idReserva),{
                 method: 'DELETE',
