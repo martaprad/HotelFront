@@ -40,6 +40,8 @@ function iniciar() {
             localStorage.removeItem('token');
             infoReservas.innerHTML = "";
             showAlert("Debe estar logueado para ver la lista de reservas", 'warning');
+            document.getElementById('navbarDropdown').style.display="none";
+            setTimeout(function(){window.location.href='Home.html';}, 3000);
         });    
 
         // Creamos la tabla para mostrar la lista de reservas
