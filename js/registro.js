@@ -7,21 +7,31 @@ function showAlert(message, type) {
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `;
-    }
+}
 
-    document.getElementById('signup-form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevenir el envío del formulario
+document.getElementById('signup-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevenir el envío del formulario
 
-        const password = document.getElementById('password').value;
-        const re_password = document.getElementById('re_password').value;
-        const telefono = document.getElementById('telefono').value;
-        const email = document.getElementById('email').value;
-        const nombre = document.getElementById('nombre').value;
+    const password = document.getElementById('password').value;
+    const re_password = document.getElementById('re_password').value;
+    const telefono = document.getElementById('telefono').value;
+    const email = document.getElementById('email').value;
+    const nombre = document.getElementById('nombre').value;
 
-                //Confirmamos que introduce todos los campos
-                if (!nombre || !email || !telefono  || !password) {
-                    showAlert('Debe introducir nombre, email, teléfono y contraseña', 'warning');
-                } else {
+    //Confirmamos que introduce todos los campos
+    if (!nombre) {
+        showAlert('Debe introducir el nombre', 'warning');
+
+    } else if (!email) {
+        showAlert('Debe introducir el email', 'warning');
+
+    } else if (!telefono) {
+        showAlert('Debe introducir el teléfono ', 'warning');
+
+    } else if (!password) {
+        showAlert('Debe introducir la contraseña', 'warning');
+
+    } else {
 
         // Expresión regular para verificar la contraseña
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -32,33 +42,33 @@ function showAlert(message, type) {
         // Expresión regular para verificar el email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Verificar si la contraseña cumple con los requisitos
-    if (!passwordRegex.test(password)) {
-        showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial.', 'warning');
-        event.preventDefault();  // Evita el envío del formulario
-        return;
-    }
+        // Verificar si la contraseña cumple con los requisitos
+        if (!passwordRegex.test(password)) {
+            showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial.', 'warning');
+            event.preventDefault();  // Evita el envío del formulario
+            return;
+        }
 
-    // Verificar si las contraseñas coinciden
-    if (password !== re_password) {
-        showAlert('Las contraseñas no coinciden.', 'danger');
-        event.preventDefault();  // Evita el envío del formulario
-        return;
-    }
+        // Verificar si las contraseñas coinciden
+        if (password !== re_password) {
+            showAlert('Las contraseñas no coinciden.', 'danger');
+            event.preventDefault();  // Evita el envío del formulario
+            return;
+        }
 
-    // Verificar si el teléfono tiene 9 dígitos
-    if (!telefonoRegex.test(telefono)) {
-        showAlert('El teléfono debe tener 9 dígitos.', 'warning');
-        event.preventDefault();  // Evita el envío del formulario
-        return;
-    }
+        // Verificar si el teléfono tiene 9 dígitos
+        if (!telefonoRegex.test(telefono)) {
+            showAlert('El teléfono debe tener 9 dígitos.', 'warning');
+            event.preventDefault();  // Evita el envío del formulario
+            return;
+        }
 
-    // Verificar si el email tiene el formato correcto
-    if (!emailRegex.test(email)) {
-        showAlert('Por favor, introduce un email válido (ejemplo: algo@algo.com).', 'warning');
-        event.preventDefault();  // Evita el envío del formulario
-        return;
-    }
+        // Verificar si el email tiene el formato correcto
+        if (!emailRegex.test(email)) {
+            showAlert('Por favor, introduce un email válido (ejemplo: algo@algo.com).', 'warning');
+            event.preventDefault();  // Evita el envío del formulario
+            return;
+        }
 
         // Si las validaciones son correctas, hacemos la llamada al backend
         if (password === re_password) {
@@ -88,7 +98,7 @@ function showAlert(message, type) {
                     showAlert('Éxito: ' + data, 'success'); // Muestra el mensaje del servidor
                     // Puedes redirigir al usuario o limpiar el formulario aquí
                     setTimeout(() => {
-                        window.location.href = 'login.html';
+                        window.location.href = 'Login.html';
                     }, 2000); // Redirigir después de 2 segundos
                 })
                 .catch(error => {
