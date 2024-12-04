@@ -93,9 +93,10 @@ function iniciar() {
                         arrayId.push(datosJSON[reservas].id);
 
                         let habitacionTipo = '';
-                        if (datosJSON[reservas].habitacionTipoId === "1") {
+
+                        if (datosJSON[reservas].habitacionTipoId == "1") {
                             habitacionTipo = 'Doble';
-                        } else if (datosJSON[reservas].habitacionTipoId === "2") {
+                        } else if (datosJSON[reservas].habitacionTipoId == "2") {
                             habitacionTipo = 'Triple';
                         } else {
                             habitacionTipo = 'Deluxe';
@@ -103,8 +104,10 @@ function iniciar() {
 
                         let actividades = '';
                         var actListJSON = datosJSON[reservas].actividadDTOList;
-                        for (var actividad in actListJSON) {
-                            actividades += actListJSON[actividad].tipoActividad + ", ";
+                        
+                        // Extraer los nombres de las actividades en un array y unirlos con comas
+                        if (actListJSON && actListJSON.length > 0) {
+                            actividades = actListJSON.map(actividad => actividad.tipoActividad).join(", ");
                         }
 
                         let transfer = '';
@@ -119,16 +122,16 @@ function iniciar() {
                         // Añadimos una fila a la tabla
                         table.innerHTML += `
                                     <tr>
-                                        <td>${datosJSON[reservas].id}</td>
-                                        <td>${datosJSON[reservas].fechaReserva.substring(0, 10).split("-").reverse().join("-")}</td>
-                                        <td>${habitacionTipo}</td>
-                                        <td>${datosJSON[reservas].fechaInicio.split("-").reverse().join("-")}</td>
-                                        <td>${datosJSON[reservas].fechaFin.split("-").reverse().join("-")}</td>
-                                        <td>${actividades}</td>
-                                        <td>${transfer}</td>
-                                        <td>${datosJSON[reservas].estado}</td>
-                                        <td>${datosJSON[reservas].precio}€</td>
-                                        <td><button class="btn btn-danger cancel-btn">Cancelar</button></td>
+                                        <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].id}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].fechaReserva.substring(0, 10).split("-").reverse().join("-")}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${habitacionTipo}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].fechaInicio.split("-").reverse().join("-")}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].fechaFin.split("-").reverse().join("-")}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${actividades}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${transfer}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].estado}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].precio}€</td>
+                                        <td style="text-align: center; vertical-align: middle;"><button class="btn btn-danger cancel-btn">Cancelar</button></td>
 
                                     </tr>
                                 `;
