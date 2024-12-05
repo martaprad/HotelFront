@@ -57,12 +57,16 @@ function iniciar() {
         })
         .then(data => {
             // Manejar respuesta exitosa
+            alert(data);
             listaResenasJSON = JSON.parse(data);
             var texto = "";
             for (var resenas in listaResenasJSON) {
 
-                //let clienteId= listaResenasJSON[resenas].clienteId;
+                //Variable para almacenar el nombre e imprimirlo
+                let nombre = listaResenasJSON[resenas].nombreCliente;
+                texto += nombre.charAt(0).toUpperCase()+nombre.slice(1) +": <br>";
 
+                //Se imprime la descripción
                 texto += "\"" + listaResenasJSON[resenas].descripcion + "\" ";
 
                 // Variable para almacenar las estrellas
