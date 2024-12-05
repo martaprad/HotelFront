@@ -41,7 +41,7 @@
                               <li><a class="dropdown-item nav-link text-dark fs-4" href="MisReservas.html">Mis Reservas</a></li>
                               <li><a class="dropdown-item nav-link text-dark fs-4" href="Resena.html">Escribir Reseña</a></li>
                               <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="#">Logout</a></li>
+                              <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="Home.html">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -59,12 +59,15 @@
                 <h2 class="text-center mb-4" style = "font-family: 'Radley', serif;">Lista de Reservas</h2>
 
                 <!-- Contenedor de mensajes de alerta -->
-                <div id="alert-container"></div>
+                <div id="alert-container" class="text-center mb-4" style="max-width: 400px;"></div>
                 
-                <!--Contenedor para inprimir las reseñas-->
-                <p id="infoReservas" class="text-center mb-2" style="font-family: 'Averia Libre'; font-size: 15px; font-weight: 500; color: #080202cc; margin-top: 10px; margin-left: 10%; margin-right: 10%">
-                </p>
-            
+                <!--Contenedor para imprimir las reseñas-->
+                <div class="table-responsive mx-auto" style="max-width: 80%; overflow-x: auto;">
+                    <p id="infoReservas" class="text-center mb-2" 
+                       style="font-family: 'Averia Libre'; font-size: 15px; font-weight: 500; 
+                              color: #080202cc; margin: 10px auto;">
+                    </p>
+                </div>
         </section>
     </main>
 

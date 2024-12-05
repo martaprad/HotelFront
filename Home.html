@@ -25,7 +25,7 @@
                     <img src="images/logo_MDV.png" alt="Logo" style="height: 80px;">
                 </a>
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav mx-auto w-100 justify-content-center gap-5">
+                    <ul class="navbar-nav mx-auto w-100 justify-content-center gap-4">
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="Home.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="Habitaciones.html">Nuestras habitaciones</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="Actividades.html">Actividades</a></li>
@@ -41,7 +41,7 @@
                               <li><a class="dropdown-item nav-link text-dark fs-4" href="MisReservas.html">Mis Reservas</a></li>
                               <li><a class="dropdown-item nav-link text-dark fs-4" href="Resena.html">Escribir Reseña</a></li>
                               <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="#">Logout</a></li>
+                              <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="Home.html">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -54,14 +54,79 @@
     <div class="d-flex justify-content-center align-items-center vh-100"
         style="background-image: url('images/foto_01_portada.png'); background-size: cover; background-position: center; opacity: 0.9;">
         <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-center text-white" style="position: relative; top: -200px;">
+            <div class="text-center text-white" style="position: relative; top: -280px;">
                 <h4 class="display-6" style="font-family: 'Magra', sans-serif; font-weight: 600; font-style: normal; color: goldenrod">WELCOME TO</h4>
                 <h1 class="display-2" style="font-family: 'Radley', serif; color: goldenrod">MDV HOTEL</h1>
-                <h3 class="display-5" style="font-family: 'Ms Madi', cursive; font-weight: 600; font-style: normal; color: goldenrod">Resort & Spa Hotel</h3> 
-                <a href="Info.html" class="btn btn-light mt-3">MÁS INFORMACIÓN</a>
+                <h3 class="display-4" style="font-family: 'Ms Madi', cursive; font-weight: 600; font-style: normal; color: goldenrod">Resort & Spa Hotel</h3> 
             </div>
         </div>    
     </div>
+
+    <main class="py-5 min-vh-100" style="background-color: #fcfcbd;">
+        <div class="container">
+            <!-- Título principal alineado a la izquierda -->
+            <div class="mb-5">
+                <h1 class="display-2" style="font-family: 'Radley', serif; color: chocolate; white-space: nowrap; text-align: left;">
+                    MDV HOTEL
+                </h1>
+            </div>
+            
+            <!-- Tres cajas del mismo tamaño alineadas en filas responsivas -->
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col d-flex">
+                    <div class="p-4 border rounded w-100" style="background-color: #fff; color: chocolate;">
+                        <h3>Oficina de reservas</h3>
+                        <p>
+                            📍 Calle desengaño 22, 28004 Madrid <br>
+                            📞 612345678 <br>
+                            ✉️ info@mdvhotel.com
+                        </p>
+                    </div>
+                </div>
+                <div class="col d-flex">
+                    <div class="p-4 border rounded w-100" style="background-color: #fff; color: chocolate;">
+                        <h3>Horarios</h3>
+                        <p>
+                            Lunes a Viernes: 9:00 am a 6:00 pm <br>
+                            Sábados: 9:00 am a 12:00 pm
+                        </p>
+                    </div>
+                </div>
+                <div class="col d-flex">
+                    <div class="p-4 border rounded w-100" style="background-color: #fff; color: chocolate;">
+                        <h3>Redes</h3>
+                        <p>
+                            <a href="#" style="text-decoration: none; color: chocolate;">Facebook</a> | 
+                            <a href="#" style="text-decoration: none; color: chocolate;">Twitter</a> | 
+                            <a href="#" style="text-decoration: none; color: chocolate;">Instagram</a>
+                        </p>
+                        <button class="btn btn-outline-secondary" style="color: chocolate; border-color: chocolate;">
+                            ¡Etiquétanos en tus fotos!
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <!-- Google Maps -->
+            <div class="row">
+                <div class="col">
+                    <h3 style="color: chocolate;">Encuéntranos aquí:</h3>
+                    <div class="border rounded" style="overflow: hidden;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.447720319022!2d-3.708848010732436!3d40.42108398174246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229d4fcd4c709%3A0xf4295bbc8b64ba2d!2scalle%20desenga%C3%B1o%2022%20madrid!5e0!3m2!1ses!2ses!4v1733255757462!5m2!1ses!2ses" 
+                            width="100%" 
+                            height="400" 
+                            style="border: 0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </main>
 
         <!-- Bootstrap JS y dependencias -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
