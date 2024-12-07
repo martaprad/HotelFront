@@ -32,16 +32,15 @@
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="Reserva.html">Reserva</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="ListaResenas.html">Reseñas</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="Login.html">Login / Registro</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-dark fs-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Menú usuario
-                            </a>
+                        <li id="userMenu" class="nav-item dropdown">
+                            <a class="nav-link text-dark fs-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <li><a class="dropdown-item nav-link text-dark fs-4" href="MisDatos.html">Mis Datos</a></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" href="MisReservas.html">Mis Reservas</a></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" href="Resena.html">Escribir Reseña</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="Home.html">Logout</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="MisDatos.html">Mis Datos</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="ActualizarDatos.html">Actualizar Datos</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="MisReservas.html">Mis Reservas</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="Resena.html">Escribir Reseña</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="Home.html">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -55,7 +54,7 @@
         style="background-image: url('images/foto_12_login.png'); background-size: cover; background-position: center; min-height: 100vh;">
         <!-- Centrar el formulario en una fila con flex y ancho del contenedor -->
         <section class="signup d-flex justify-content-center align-items-center h-100 w-75">
-            <div class="card p-4 shadow-lg text-center" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9); max-width: 500px; width: 90%;">
+            <div class="card p-4 shadow-lg text-left" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9); max-width: 500px; width: 90%;">
                         <form method="POST" id="reservas-form" class="signup-form">
                             <h2 class="text-center mb-4" style = "font-family: 'Radley', serif;">Realizar Reserva</h2>
                             
@@ -64,19 +63,19 @@
 
                             <!-- Fecha inicio de reserva -->
                             <div id="fechaInicioGroup" class="form-group mb-3">  
-                                <label for="fechaInicio" class="form-label">Fecha de entrada:</label>  
+                                <label for="fechaInicio" class="form-label">Fecha de entrada</label>  
                                 <input type="date" id="fechaInicio" min="2024-11-01" max="2025-12-31" step="1">
                             </div>
 
                             <!--Fecha fin de reserva -->
                             <div id="fechaFinGroup" class="form-group mb-3">
-                                <label for="fechaFin" class="form-label">Fecha de salida:</label>
+                                <label for="fechaFin" class="form-label">Fecha de salida</label>
                                 <input type="date" id="fechaFin" min="2024-11-01" max="2025-12-31" step="1">
                             </div>
 
                             <!-- Tipo de Habitación -->
                             <div id="habGroup" class="form-group mb-3">
-                                <label for="tipoHab" class="form-label">Elige habitación:</label>
+                                <label for="tipoHab" class="form-label">Elige habitación</label>
                                 <select class="form-select" name="tipoHab" id="tipoHab">
                                     <option></option>
                                     <option value="1" >DOBLE (100 EUROS)</option>
@@ -87,7 +86,7 @@
 
                             <!-- Actividades -->
                             <div id="activGroup" class="form-group mb-3">
-                                <label for="actividades" class="form-label">Añade actividades a tu reserva:</label>
+                                <label for="actividades" class="form-label">Añade actividades a tu reserva</label>
                                 <div id="actividades" class="text-start">
                                     <div class="form-check">
                                         <input class="form-check-input border border-2 border-dark" type="checkbox" value="SPA" id="actividadSPA">
@@ -121,8 +120,8 @@
                             </div>
 
                             <!-- Transfer -->
-                            <div id="transferGroup" class="form-group mb-3">
-                                <label for="transfer" class="form-label">Añade transfer a tu reserva:</label>
+                            <div id="transferGroup" class="form-group mb-4">
+                                <label for="transfer" class="form-label">Añade transfer a tu reserva</label>
                                 <select class="form-select" name="transfer" id="transfer">
                                     <option></option>
                                     <option value="IDA" >SOLO IDA (10 Euros)</option>

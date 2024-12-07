@@ -32,16 +32,15 @@
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="Reserva.html">Reserva</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="ListaResenas.html">Reseñas</a></li>
                         <li class="nav-item"><a class="nav-link text-dark fs-4" href="Login.html">Login / Registro</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-dark fs-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Menú usuario
-                            </a>
+                        <li id="userMenu" class="nav-item dropdown">
+                            <a class="nav-link text-dark fs-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <li><a class="dropdown-item nav-link text-dark fs-4" href="MisDatos.html">Mis Datos</a></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" href="MisReservas.html">Mis Reservas</a></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" href="Resena.html">Escribir Reseña</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="#">Logout</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="MisDatos.html">Mis Datos</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="ActualizarDatos.html">Actualizar Datos</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="MisReservas.html">Mis Reservas</a></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" href="Resena.html">Escribir Reseña</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item nav-link text-dark fs-4" id="logout" href="Home.html">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -56,16 +55,13 @@
     <!-- Centrar el formulario en una fila con flex y ancho del contenedor -->
     <section class="update d-flex justify-content-center align-items-center h-100 w-100">
         <div class="card p-4 shadow-lg " style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.9); max-width: 500px; width: 90%;">
-
-                <!-- Contenedor de mensajes de alerta -->
-                <div id="alert-container"></div>
                 
                 <form method="POST" id="update-form" class="update-form">
                     <h2 class="text-center mb-4" style="font-family: 'Radley', serif;">Actualizar Datos</h2>
-                
+                    
                     <!-- Contenedor de mensajes de alerta -->
-                    <div id="alert-container"></div>
-                
+                    <div id="alert-container" class="text-center mb-4" style="max-width: 400px;"></div>
+                        
                     <!-- Email -->
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -85,14 +81,14 @@
                     </div>
                 
                     <!-- Confirmar Contraseña -->
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-4">
                         <label for="re_password" class="form-label">Repite tu Password</label>
                         <input type="password" class="form-control" name="re_password" id="re_password"
                             placeholder="Repite tu password">
                     </div>
                 
                     <!-- Botón de registro con color personalizado -->
-                    <div class="d-grid">
+                    <div class="d-grid mb-4">
                         <button type="submit" class="btn btn-primary"
                             style="background-color: #f7931e; color: white;">ACTUALIZAR DATOS</button>
                     </div>
