@@ -1,49 +1,61 @@
-window.addEventListener("load", iniciar);
 
-function iniciar() {
-
-    // Función para mostrar alertas con Bootstrap
-    function showAlert(message, type) {
-        const alertContainer = document.getElementById('alert-container');
-        alertContainer.innerHTML = `
+// Función para mostrar alertas con Bootstrap
+function showAlert(message, type) {
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `
             <div class="alert alert-${type} alert-dismissible fade show" role="alert">
                 ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         `;
-    }
+}
 
-    let token = localStorage.getItem('token');
+let token = localStorage.getItem('token');
 
-    //Si el usuario está logueado
-    if (token) {
+//Si el usuario está logueado
+if (token) {
 
-        //Logout desde el menú de usuario
-        document.getElementById('logout').addEventListener('click', function (event) {
-            localStorage.removeItem('token');
-            document.getElementById('navbarDropdown').style.display="none";
-        
-            showAlert("Debe de acceder a su cuenta de usuario antes de actualizar datos", 'warning');
-            setTimeout(function(){window.location.href='Registro.html';}, 3000);
+    //Obtenemos el nombre del usuario
+    fetch('http://localhost:8080/auth/cliente', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then(response => response.text())
+        .then(data => {
+            let name = data.charAt(0).toUpperCase() + data.slice(1);
+            document.getElementById('navbarDropdown').innerHTML = name;
+        })
+        .catch(error => {
+            console.error('Error fetching user data:', error);
         });
-        
-        let name="";
-        //Obtenemos el nombre del usuario
-        fetch('http://localhost:8080/auth/cliente', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-            })
-            .then(response => response.text())
-            .then(data => {
-                name = data;
-                return data;
-            })
-            .catch(error => {
-                console.error('Error fetching user data:', error);
-            });
+
+    //Logout desde el menú de usuario
+    document.getElementById('logout').addEventListener('click', function (event) {
+        localStorage.removeItem('token');
+        document.getElementById('userMenu').style.display = "none";
+        showAlert("Debe de acceder a su cuenta de usuario antes de actualizar datos", 'warning');
+        setTimeout(function () { window.location.href = 'Home.html'; }, 3000);
+    });
+
+    let name = "";
+    //Obtenemos el nombre del usuario
+    fetch('http://localhost:8080/auth/cliente', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then(response => response.text())
+        .then(data => {
+            name = data;
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching user data:', error);
+        });
 
 
     document.getElementById('update-form').addEventListener('submit', function (event) {
@@ -55,9 +67,17 @@ function iniciar() {
         const re_password = document.getElementById('re_password').value;
 
         //Confirmamos que introduce todos los campos
-        if((!email) || (!telefono) ||(!password)){
-            showAlert('Debe introducir email, teléfono y contraseña', 'danger');
-            event.preventDefault(); 
+        if (!email) {
+            showAlert('Introduzca el email, por favor', 'danger');
+            event.preventDefault();
+
+        } else if (!telefono) {
+            showAlert('Introduzca el teléfono, por favor', 'danger');
+            event.preventDefault();
+
+        } else if (!password) {
+            showAlert('Introduzca la contraseña, por favor', 'danger');
+            event.preventDefault();
 
         } else {
 
@@ -99,23 +119,23 @@ function iniciar() {
                     return;
                 }
 
-            } 
+            }
 
 
             // Si las validaciones son correctas, hacemos la llamada al backend
-            fetch('http://localhost:8080/auth/actualizar-perfil',{
+            fetch('http://localhost:8080/auth/actualizar-perfil', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                    body: JSON.stringify({
-                        nombre: name,
-                        email: email,
-                        password: password,
-                        telefono: telefono
-                    })
+                body: JSON.stringify({
+                    nombre: name,
+                    email: email,
+                    password: password,
+                    telefono: telefono
                 })
+            })
                 .then(response => {
                     if (response.ok) {
                         return response.text();
@@ -128,10 +148,10 @@ function iniciar() {
                     // Manejar respuesta exitosa
                     showAlert("Datos actualizados con éxito, realice el login de nuevo si desea realizar una reserva", 'success');
                     localStorage.removeItem('token');
-                    setTimeout(function(){window.location.href='Home.html';}, 3000)
-                    
+                    setTimeout(function () { window.location.href = 'Home.html'; }, 3000)
+
                     return data;
-                })    
+                })
 
                 .catch(error => {
                     //Manejar error
@@ -139,9 +159,8 @@ function iniciar() {
                     showAlert('Error: ' + error.message, 'danger');
                 });
 
-            }
-        });
+        }
+    });
 
-    };
+};
 
-}
