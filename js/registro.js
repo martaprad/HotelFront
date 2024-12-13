@@ -30,6 +30,9 @@ document.getElementById('signup-form').addEventListener('submit', function (even
     } else if (!password) {
         showAlert('Debe introducir la contraseña', 'warning');
 
+    } else if (!document.getElementById('agree-term').checked){
+        showAlert('Debe aceptar los términos del servicio', 'warning');
+
     } else {
 
         // Expresión regular para verificar la contraseña
@@ -43,7 +46,7 @@ document.getElementById('signup-form').addEventListener('submit', function (even
 
         // Verificar si la contraseña cumple con los requisitos
         if (!passwordRegex.test(password)) {
-            showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial.', 'warning');
+            showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y un carácter especial(@$!%*?&).', 'warning');
             event.preventDefault();  // Evita el envío del formulario
             return;
         }
