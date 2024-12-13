@@ -19,6 +19,9 @@ if (token) {
         .catch(error => {
             console.error('Error fetching user data:', error);
         });
+    
+    //Ocultamos el login/Registro de la barra de navegación
+    document.getElementById('loginNav').style.visibility = "hidden";
 
     //Logout desde el menú de usuario
     document.getElementById('logout').addEventListener('click', function (event) {
@@ -53,7 +56,9 @@ fetch('http://localhost:8080/resenas', {
     .then(data => {
         // Manejar respuesta exitosa
         listaResenasJSON = JSON.parse(data);
-        var texto = "";
+        let texto = "";
+        let totalResenas=0;
+        let puntuacion=0;
         for (var resenas in listaResenasJSON) {
 
             //Variable para almacenar el nombre e imprimirlo
@@ -68,22 +73,29 @@ fetch('http://localhost:8080/resenas', {
 
             if (listaResenasJSON[resenas].resenaPuntuacion == "one") {
                 estrellas = '★';
+                puntuacion+=1;
             } else if (listaResenasJSON[resenas].resenaPuntuacion == "two") {
                 estrellas = '★ ★';
+                puntuacion+=2;
             } else if (listaResenasJSON[resenas].resenaPuntuacion == "three") {
                 estrellas = '★ ★ ★';
+                puntuacion+=3;
             } else if (listaResenasJSON[resenas].resenaPuntuacion == "four") {
                 estrellas = '★ ★ ★ ★';
+                puntuacion+=4;
             } else {
                 estrellas = '★ ★ ★ ★ ★';
+                puntuacion+=5;
             }
-
+            totalResenas++;
             // Agregar las estrellas y aplicar el color amarillo
             texto += `<span class="star-rated">${estrellas}</span><br>` +
-                listaResenasJSON[resenas].fechaResena.substring(0, 10).split("-").reverse().join("-") + "<br><br>";
+                listaResenasJSON[resenas].fechaResena.substring(0, 10).split("-").reverse().join("-") + "<br>";
         }
         // Añadir el texto con las estrellas al contenedor en el HTML
-        infoListaResenas.innerHTML += texto;
+        totalPuntuacion = puntuacion/totalResenas;
+        infoListaResenas.innerHTML += texto + '<br></br>';
+        infoPuntuacionResenas.innerHTML += "Puntuación Hotel: " + totalPuntuacion.toFixed(2);
         return data;
 
     })

@@ -8,8 +8,8 @@ function showAlert(message, type) {
     `;
 }
 
-token = localStorage.getItem('token');
-var arrayId = [];
+let token = localStorage.getItem('token');
+let arrayId = [];
 
 // Si el usuario está logueado
 if (token) {
@@ -30,6 +30,9 @@ if (token) {
         .catch(error => {
             console.error('Error fetching user data:', error);
         });
+
+    //Ocultamos el login/Registro de la barra de navegación
+    document.getElementById('loginNav').style.visibility = "hidden";
 
     //Logout desde el menú de usuario
     document.getElementById('logout').addEventListener('click', function (event) {
@@ -139,11 +142,12 @@ if (token) {
 
                 //Añadimos evento a cada botón de cancelar
                 const cancelButtons = document.querySelectorAll('.cancel-btn');
-                cancelButtons.forEach((btn) => {
+                cancelButtons.forEach((btn, index) => {
                     btn.addEventListener('click', function (event) {
                         let row = event.target.closest('tr');
-                        let idReserva = datosJSON[reservas].id;
-                        cancelarReserva(idReserva, row);
+                        //Usamos el index para obtener el id de la reserva
+                        let idReserva = datosJSON[index].id; 
+                        cancelarReserva(idReserva, row); 
                     });
                 });
 
@@ -158,7 +162,7 @@ if (token) {
     function cancelarReserva(idReserva, row) {
         idReserva = parseInt(idReserva);
         showAlert(idReserva, 'warning');
-        const token = localStorage.getItem('token');
+        //const token = localStorage.getItem('token');
         fetch('http://localhost:8080/reservas/${idReserva}'.replace('${idReserva}', idReserva), {
             method: 'DELETE',
             headers: {
@@ -184,5 +188,4 @@ if (token) {
 } else {
     showAlert("Debe estar logueado para ver la lista de reservas", 'warning');
 }
-
 

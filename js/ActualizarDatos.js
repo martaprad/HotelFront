@@ -162,5 +162,8 @@ if (token) {
         }
     });
 
+} else {
+    showAlert("Debe de acceder a su cuenta de usuario antes de actualizar datos", 'warning');
+    setTimeout(function () { window.location.href = 'Home.html'; }, 3000);
 };
 

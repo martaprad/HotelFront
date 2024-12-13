@@ -29,6 +29,9 @@ if (token) {
         .catch(error => {
             console.error('Error fetching user data:', error);
         });
+    
+    //Ocultamos el login/Registro de la barra de navegación
+    document.getElementById('loginNav').style.visibility = "hidden";
 
     //Logout desde el menú de usuario
     document.getElementById('logout').addEventListener('click', function (event) {
