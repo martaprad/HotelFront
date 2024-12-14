@@ -59,7 +59,7 @@ if (token) {
                     <th>Actividades</th>
                     <th>Transfer</th>
                     <th>Estado</th>
-                    <th>Precio</th>
+                    <th>Precio Total</th>
                     <th>Cancelar Reserva</th>
                 </tr>
             </thead>
@@ -93,45 +93,58 @@ if (token) {
                     arrayId.push(datosJSON[reservas].id);
 
                     let habitacionTipo = '';
+                    let precioHabitacion = 0;
 
                     if (datosJSON[reservas].habitacionTipoId == "1") {
                         habitacionTipo = 'Doble';
+                        precioHabitacion = 100;
                     } else if (datosJSON[reservas].habitacionTipoId == "2") {
                         habitacionTipo = 'Triple';
+                        precioHabitacion = 150;
                     } else {
                         habitacionTipo = 'Deluxe';
+                        precioHabitacion = 200;
+                    }
+
+                    let transfer = '';
+                    let precioTransfer = 0;
+                    if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDAVUELTA") {
+                        transfer = "Ida y vuelta";
+                        precioTransfer = 20;
+                    } else if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDA") {
+                        transfer = "Ida";
+                        precioTransfer = 10;
+                    } else {
+                        transfer = "No reservado";
                     }
 
                     let actividades = '';
-                    var actListJSON = datosJSON[reservas].actividadDTOList;
+                    let actListJSON = datosJSON[reservas].actividadDTOList;
+                    let precioActividades = datosJSON[reservas].precio-precioHabitacion-precioTransfer;
 
                     // Extraer los nombres de las actividades en un array y unirlos con comas
                     if (actListJSON && actListJSON.length > 0) {
                         actividades = actListJSON.map(actividad => actividad.tipoActividad).join(", ");
                     }
 
-                    let transfer = '';
-                    if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDAVUELTA") {
-                        transfer = "Ida y vuelta";
-                    } else if (datosJSON[reservas].trasladoDTO.tipoTraslado === "IDA") {
-                        transfer = "Ida";
-                    } else {
-                        transfer = "No reservado";
-                    }
+                    // Si la reserva está CANCELADA deshabilitamos el botón
+                    let cancelButtonDisabled = datosJSON[reservas].estado === "CANCELADA" ? 'disabled' : '';
 
                     // Añadimos una fila a la tabla
                     table.innerHTML += `
                                     <tr>
                                         <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].id}</td>
                                         <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].fechaReserva.substring(0, 10).split("-").reverse().join("-")}</td>
-                                        <td style="text-align: center; vertical-align: middle;">${habitacionTipo}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${habitacionTipo} (${precioHabitacion}€)</td>
                                         <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].fechaInicio.split("-").reverse().join("-")}</td>
                                         <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].fechaFin.split("-").reverse().join("-")}</td>
-                                        <td style="text-align: center; vertical-align: middle;">${actividades}</td>
-                                        <td style="text-align: center; vertical-align: middle;">${transfer}</td>
+                                        <td style="text-align: center; vertical-align: middle;">${actividades} (${precioActividades}€)</td>
+                                        <td style="text-align: center; vertical-align: middle;">${transfer} (${precioTransfer}€)</td>
                                         <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].estado}</td>
                                         <td style="text-align: center; vertical-align: middle;">${datosJSON[reservas].precio}€</td>
-                                        <td style="text-align: center; vertical-align: middle;"><button class="btn btn-danger cancel-btn">Cancelar</button></td>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <button class="btn btn-danger cancel-btn" ${cancelButtonDisabled}>Cancelar</button>
+                                        </td>
 
                                     </tr>
                                 `;
