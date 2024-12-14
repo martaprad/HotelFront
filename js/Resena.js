@@ -107,7 +107,7 @@ if (token) {
     document.getElementById('rating').style.display = "none";
     document.getElementById('textAreaResena').style.display = "none";
     document.getElementById('enviarResena').style.display = "none";
-    showAlert('Para escribir una reseña debe de acceder a su cuenta de usuario', 'warning');
+    showAlert('Para escribir una reseña debe <br> acceder a su cuenta de usuario', 'warning');
 }
 
 

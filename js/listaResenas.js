@@ -93,11 +93,15 @@ fetch('http://localhost:8080/resenas', {
                 listaResenasJSON[resenas].fechaResena.substring(0, 10).split("-").reverse().join("-") + "<br>";
         }
         // Añadir el texto con las estrellas al contenedor en el HTML
-        totalPuntuacion = puntuacion/totalResenas;
-        infoListaResenas.innerHTML += texto + '<br></br>';
-        infoPuntuacionResenas.innerHTML += "Puntuación Hotel: " + totalPuntuacion.toFixed(2);
+        //se añade un if para que aparezca un texto en caso de no tener valoraciones aún
+        if (totalResenas === 0) {
+            infoPuntuacionResenas.innerHTML += "Puntuación Hotel: sin valoraciones aún";
+            } else {
+            totalPuntuacion = puntuacion/totalResenas;
+            infoListaResenas.innerHTML += texto + '<br></br>';
+            infoPuntuacionResenas.innerHTML += "Puntuación Hotel: " + totalPuntuacion.toFixed(2);
+            }
         return data;
-
     })
 
     .catch(error => {
