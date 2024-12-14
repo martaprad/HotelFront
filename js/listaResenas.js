@@ -55,11 +55,14 @@ fetch('http://localhost:8080/resenas', {
     })
     .then(data => {
         // Manejar respuesta exitosa
-        listaResenasJSON = JSON.parse(data);
+        let listaResenasJSON = JSON.parse(data);
+
+        // Deseamos imprimir las reseñas más recientes
+        let recientesResenasJSON = listaResenasJSON.reverse();
         let texto = "";
         let totalResenas=0;
         let puntuacion=0;
-        for (var resenas in listaResenasJSON) {
+        for (var resenas in recientesResenasJSON) {
 
             //Variable para almacenar el nombre e imprimirlo
             let nombre = listaResenasJSON[resenas].nombreCliente;
@@ -90,9 +93,9 @@ fetch('http://localhost:8080/resenas', {
             totalResenas++;
             // Agregar las estrellas y aplicar el color amarillo
             texto += `<span class="star-rated">${estrellas}</span><br>` +
-                listaResenasJSON[resenas].fechaResena.substring(0, 10).split("-").reverse().join("-") + "<br>";
+                listaResenasJSON[resenas].fechaResena.substring(0, 10).split("-").reverse().join("-") + "<br><br>";
         }
-        // Añadir el texto con las estrellas al contenedor en el HTML
+        // Añadir el texto con las estrellas y la fecha al contenedor en el HTML
         //se añade un if para que aparezca un texto en caso de no tener valoraciones aún
         if (totalResenas === 0) {
             infoPuntuacionResenas.innerHTML += "Puntuación Hotel: sin valoraciones aún";

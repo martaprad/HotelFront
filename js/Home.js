@@ -1,3 +1,10 @@
+//Check si el token ha expirado (10 horas)
+let fechaExpiracion = localStorage.getItem('expiracionToken');
+let fechaActual = Date.now();
+
+if (fechaActual > fechaExpiracion) {
+    localStorage.clear();
+}
 
 let token = localStorage.getItem('token');
 

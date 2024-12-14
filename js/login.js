@@ -49,8 +49,12 @@ function iniciar() {
                 })
 
                 .then(data => {
-                    // Manejar respuesta exitosa
+                    // Manejar respuesta exitosa, almacenamos el token y su fecha de expiración, mostramos alerta 
+                    // ocultamos los campos del formulario y redigirimos a Home
                     localStorage.setItem('token', data.token);
+                    // 10 hours en milisegundos
+                    let expiracionToken = Date.now() + 10 * 60 * 60 * 1000; 
+                    localStorage.setItem('expiracionToken', expiracionToken);
                     showAlert('Ha accedido a su cuenta de usuario', 'success');
                     document.getElementById('emailGroup').style.display="none";
                     document.getElementById('passwordGroup').style.display="none";
