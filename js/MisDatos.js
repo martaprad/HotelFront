@@ -77,6 +77,8 @@ if (token) {
         .then(data => {
             datosJSON = JSON.parse(data);
 
+            //TODO -> pendiente revisar alerta cuando muestra datos de usuario, sale muy grande
+
             // Añadimos tantas filas como datos a la tabla
             table.innerHTML += `
             <tr>
