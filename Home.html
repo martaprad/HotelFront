@@ -50,6 +50,25 @@
         </nav>
     </header>
 
+    <!-- Cookie Consent Modal -->
+<div class="modal fade" id="cookieConsentModal" tabindex="-1" aria-labelledby="cookieConsentLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cookieConsentLabel">Consentimiento de Cookies</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Utilizamos cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web. Al continuar navegando, aceptas nuestro uso de cookies.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Denegar</button>
+          <button type="button" class="btn btn-primary" id="acceptCookiesBtn">Aceptar Cookies</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Fondo con imagen -->
     <div class="d-flex justify-content-center align-items-center vh-100"
         style="background-image: url('images/foto_01_portada.png'); background-size: cover; background-position: center; opacity: 0.9;">
@@ -130,6 +149,8 @@
 
         <!-- Bootstrap JS y dependencias -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
         <script src="js/Home.js"></script>
 </body>
 

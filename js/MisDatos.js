@@ -1,3 +1,12 @@
+//Verifica si el token ha expirado (10 horas)
+let fechaExpiracion = localStorage.getItem('expiracionToken');
+let fechaActual = Date.now();
+
+if (fechaActual > fechaExpiracion) {
+    localStorage.clear();
+}
+
+
 // funcion que muestra alertas
 function showAlert(message, type) {
     const alertContainer = document.getElementById('alert-container');
@@ -37,7 +46,7 @@ if (token) {
     document.getElementById('logout').addEventListener('click', function (event) {
         localStorage.removeItem('token');
         infoDatos.innerHTML = "";
-        showAlert("Debe estar logueado para actualizar sus datos", 'warning');
+        //showAlert("Debe estar logueado para actualizar sus datos", 'warning');
         document.getElementById('userMenu').style.display = "none";
         setTimeout(function () { window.location.href = 'Home.html'; }, 3000);
     });

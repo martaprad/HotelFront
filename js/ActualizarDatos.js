@@ -1,3 +1,10 @@
+//Verifica si el token ha expirado (10 horas)
+let fechaExpiracion = localStorage.getItem('expiracionToken');
+let fechaActual = Date.now();
+
+if (fechaActual > fechaExpiracion) {
+    localStorage.clear();
+}
 
 // Función para mostrar alertas con Bootstrap
 function showAlert(message, type) {
@@ -38,7 +45,7 @@ if (token) {
     document.getElementById('logout').addEventListener('click', function (event) {
         localStorage.removeItem('token');
         document.getElementById('userMenu').style.display = "none";
-        showAlert("Debe de acceder a su cuenta de usuario antes de actualizar datos", 'warning');
+        //showAlert("Debe de acceder a su cuenta de usuario antes de actualizar datos", 'warning');
         setTimeout(function () { window.location.href = 'Home.html'; }, 3000);
     });
 

@@ -1,3 +1,11 @@
+//Verifica si el token ha expirado (10 horas)
+let fechaExpiracion = localStorage.getItem('expiracionToken');
+let fechaActual = Date.now();
+
+if (fechaActual > fechaExpiracion) {
+    localStorage.clear();
+}
+
 // Función para mostrar alertas con Bootstrap
 function showAlert(message, type) {
     const alertContainer = document.getElementById('alert-container');
@@ -41,7 +49,7 @@ if (token) {
         document.getElementById('textAreaResena').style.display = "none";
         document.getElementById('enviarResena').style.display = "none";
         document.getElementById('userMenu').style.display = "none";
-        showAlert('Para escribir una reseña debe de acceder a su cuenta de usuario', 'warning');
+        //showAlert('Para escribir una reseña debe de acceder a su cuenta de usuario', 'warning');
         setTimeout(function () { window.location.href = 'Home.html'; }, 3000);
     });
 
