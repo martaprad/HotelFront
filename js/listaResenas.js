@@ -1,3 +1,11 @@
+//Verifica si el token ha expirado (10 horas)
+let fechaExpiracion = localStorage.getItem('expiracionToken');
+let fechaActual = Date.now();
+
+if (fechaActual > fechaExpiracion) {
+    localStorage.clear();
+}
+
 let token = localStorage.getItem('token');
 
 //Si el usuario está logueado
@@ -69,8 +77,26 @@ fetch('http://localhost:8080/resenas', {
             texto += nombre.charAt(0).toUpperCase() + nombre.slice(1) + ": <br>";
 
             //Se imprime la descripción
+            if(listaResenasJSON[resenas].descripcion.length<=100){
             texto += "\"" + listaResenasJSON[resenas].descripcion + "\" ";
+            } else {
+                let review = listaResenasJSON[resenas].descripcion;
+    
+                // Encontramos el último espacio en blanco en los 100 primeros caracteres
+                let puntoSeparacion = review.lastIndexOf(' ', 100);
+                
+                // Si no lo encuentra.. será el caracter 100
+                if (puntoSeparacion === -1) breakPoint = 100;
 
+                // Split the description into two parts
+                let primeraLinea = review.substring(0, puntoSeparacion); // First part
+                let segundaLinea = review.substring(puntoSeparacion).trim(); // Second part, trimming any leading space
+
+                // Add the first part and a line break
+                texto += "\"" + primeraLinea + "<br>" + segundaLinea + "\"";
+
+            } 
+            
             // Variable para almacenar las estrellas
             let estrellas = '';
 

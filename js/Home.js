@@ -1,4 +1,22 @@
-//Check si el token ha expirado (10 horas)
+
+  // Check if cookies have been accepted before
+  if (!localStorage.getItem('cookiesAccepted')) {
+    // If not, show the modal
+    var cookieModal = new bootstrap.Modal(document.getElementById('cookieConsentModal'));
+    cookieModal.show();
+  }
+
+  // Handle the acceptance of cookies
+  document.getElementById('acceptCookiesBtn').addEventListener('click', function () {
+    // Store the consent in localStorage
+    localStorage.setItem('cookiesAccepted', 'true');
+    // Hide the modal
+    var cookieModal = bootstrap.Modal.getInstance(document.getElementById('cookieConsentModal'));
+    cookieModal.hide();
+  });
+
+
+//Verifica si el token ha expirado (10 horas)
 let fechaExpiracion = localStorage.getItem('expiracionToken');
 let fechaActual = Date.now();
 
