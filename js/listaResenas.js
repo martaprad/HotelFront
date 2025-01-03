@@ -88,11 +88,11 @@ fetch('http://localhost:8080/resenas', {
                 // Si no lo encuentra.. será el caracter 100
                 if (puntoSeparacion === -1) breakPoint = 100;
 
-                // Split the description into two parts
-                let primeraLinea = review.substring(0, puntoSeparacion); // First part
-                let segundaLinea = review.substring(puntoSeparacion).trim(); // Second part, trimming any leading space
+                // Separamos la descripción en dos trozos
+                let primeraLinea = review.substring(0, puntoSeparacion); 
+                let segundaLinea = review.substring(puntoSeparacion).trim(); 
 
-                // Add the first part and a line break
+                // Añadimos las partes con el salto de línea
                 texto += "\"" + primeraLinea + "<br>" + segundaLinea + "\"";
 
             } 

@@ -1,16 +1,16 @@
 
-  // Check if cookies have been accepted before
+  // Revisar si las Cookies han sido aceptads antes
   if (!localStorage.getItem('cookiesAccepted')) {
-    // If not, show the modal
+    // Si no han sido muestra el mensaje
     var cookieModal = new bootstrap.Modal(document.getElementById('cookieConsentModal'));
     cookieModal.show();
   }
 
-  // Handle the acceptance of cookies
+  // Manejamos el consentimiento de las Cookies
   document.getElementById('acceptCookiesBtn').addEventListener('click', function () {
-    // Store the consent in localStorage
+    //Almacenamos en LocalStorage
     localStorage.setItem('cookiesAccepted', 'true');
-    // Hide the modal
+    //Ocualtamos el mensaje de las Cookies
     var cookieModal = bootstrap.Modal.getInstance(document.getElementById('cookieConsentModal'));
     cookieModal.hide();
   });

@@ -91,7 +91,8 @@ if (token) {
             }
         })
         .then(data => {
-            datosJSON = JSON.parse(data);
+            //Deseamos imprimir las reservas más recientes
+            let datosJSON = JSON.parse(data).reverse();
 
             if (datosJSON.length === 0) {
                 showAlert("No tiene reservas a su nombre", 'warning');
