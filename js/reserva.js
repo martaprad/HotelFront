@@ -190,7 +190,7 @@ if (token) {
 
                         .catch(error => {
                             // Manejar error
-                            showAlert('Error: ' + error.message, 'danger');
+                            showAlert(error.message, 'danger');
                         });
                 }
             }

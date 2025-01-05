@@ -197,6 +197,7 @@ if (token) {
                     // Quitamos la fila de la tabla
                     row.remove();
                     showAlert("Reserva cancelada con éxito", 'success');
+                    infoReservas.innerHTML= " ";
                 } else {
                     showAlert("Hubo un error al cancelar la reserva", 'danger');
                 }
