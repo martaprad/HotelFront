@@ -10,7 +10,7 @@
   document.getElementById('acceptCookiesBtn').addEventListener('click', function () {
     //Almacenamos en LocalStorage
     localStorage.setItem('cookiesAccepted', 'true');
-    //Ocualtamos el mensaje de las Cookies
+    //Ocultamos el mensaje de las Cookies
     var cookieModal = bootstrap.Modal.getInstance(document.getElementById('cookieConsentModal'));
     cookieModal.hide();
   });
