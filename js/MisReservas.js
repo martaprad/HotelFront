@@ -194,9 +194,8 @@ if (token) {
         })
             .then(response => {
                 if (response.ok) {
-                    // Quitamos la fila de la tabla
-                    row.remove();
                     showAlert("Reserva cancelada con éxito", 'success');
+                    setTimeout(function () { window.location.href = 'MisReservas.html'; }, 3000);
                 } else {
                     showAlert("Hubo un error al cancelar la reserva", 'danger');
                 }

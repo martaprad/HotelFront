@@ -1,5 +1,11 @@
 window.addEventListener("load", iniciar);
 
+// Revisar si las Cookies han sido aceptads antes
+if (!localStorage.getItem('cookiesAccepted')) {
+    // Si no han sido redirige al Home
+    window.location.href = 'Home.html';
+}
+
 function iniciar() {
 
     // Función para mostrar alertas con Bootstrap

@@ -1,3 +1,9 @@
+// Revisar si las Cookies han sido aceptads antes
+if (!localStorage.getItem('cookiesAccepted')) {
+    // Si no han sido redirige al Home
+    window.location.href = 'Home.html';
+}
+
 //Verifica si el token ha expirado (10 horas)
 let fechaExpiracion = localStorage.getItem('expiracionToken');
 let fechaActual = Date.now();
@@ -124,11 +130,11 @@ fetch('http://localhost:8080/resenas', {
         // Añadir el texto con las estrellas y la fecha al contenedor en el HTML
         //se añade un if para que aparezca un texto en caso de no tener valoraciones aún
         if (totalResenas === 0) {
-            infoPuntuacionResenas.innerHTML += "Puntuación Hotel: sin valoraciones aún";
+            infoPuntuacionResenas.innerHTML += "No hay reseñas aún";
             } else {
             totalPuntuacion = puntuacion/totalResenas;
             infoListaResenas.innerHTML += texto + '<br></br>';
-            infoPuntuacionResenas.innerHTML += "Puntuación Hotel: " + totalPuntuacion.toFixed(2);
+            //infoPuntuacionResenas.innerHTML += "Puntuación Hotel: " + totalPuntuacion.toFixed(2);
             }
         return data;
     })

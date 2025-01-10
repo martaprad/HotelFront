@@ -1,3 +1,9 @@
+// Revisar si las Cookies han sido aceptads antes
+if (!localStorage.getItem('cookiesAccepted')) {
+    // Si no han sido redirige al Home
+    window.location.href = 'Home.html';
+}
+
 //Verifica si el token ha expirado (10 horas)
 let fechaExpiracion = localStorage.getItem('expiracionToken');
 let fechaActual = Date.now();
@@ -190,7 +196,7 @@ if (token) {
 
                         .catch(error => {
                             // Manejar error
-                            showAlert('Error: ' + error.message, 'danger');
+                            showAlert(error.message, 'danger');
                         });
                 }
             }
