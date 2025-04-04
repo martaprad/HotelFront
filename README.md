@@ -44,10 +44,9 @@
 > Requiere tener instalados Docker y Docker Compose
 
 1. Clona ambos repositorios:
-   ```bash
-git clone https://github.com/martaprad/HotelFront.git
-git clone https://github.com/DavidRNMR/Hotel.git
    ```
+   git clone https://github.com/martaprad/HotelFront.git
+   git clone https://github.com/DavidRNMR/Hotel.git
 
 2. Asegúrate de tener el archivo docker-compose.yml (proporcionado en el backend)
 
