@@ -51,11 +51,12 @@
 2. Asegúrate de tener el archivo docker-compose.yml (proporcionado en el backend)
 
 3. Desde la raíz del proyecto donde esté el docker-compose.yml, ejecuta:
-  docker-compose up --build
+   ```
+   docker-compose up --build
 
 4. Accede desde el navegador:
-  🌐 Frontend: http://localhost:3002/Home.html
-  🛠️ Backend: http://localhost:8080
+   🌐 [Frontend](http://localhost:3002/Home.html)
+   🌐 [Backend](http://localhost:8080)
 
 ### 🛠️ Opción 2: Manualmente (sin Docker)
 1. Abre los archivos HTML desde un servidor local (por ejemplo, usando la extensión Live Server de VSCode)
