@@ -2,7 +2,7 @@
 
 **Hotel MDV** es una aplicación web desarrollada como proyecto final del Ciclo Superior de Desarrollo de Aplicaciones Web. Esta plataforma permite a los usuarios realizar reservas en un hotel, incluyendo habitaciones, actividades y transfers, todo ello desde una interfaz moderna, accesible y segura. Este repositorio contiene la **parte frontend**.
 
-🔗 [Repositorio del backend [Hotel (Spring Boot)](https://github.com/DavidRNMR/Hotel)
+🔗 Repositorio del backend --> [Hotel](https://github.com/DavidRNMR/Hotel)
 
 ---
 
