@@ -65,6 +65,10 @@
 
 3. Accede desde tu navegador a Home.html
 
+```markdown
+📁 Consulta la [estructura del proyecto](STRUCTURE.md) para más detalles sobre los archivos y carpetas.
+```
+
 👥 Autores
 - Marta Pradillo
 - David Rivera
